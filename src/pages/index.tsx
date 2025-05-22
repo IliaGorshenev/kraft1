@@ -3,6 +3,7 @@ import { button as buttonStyles } from '@heroui/theme';
 
 import FeatureSection from '@/components/features';
 import { subtitle, title } from '@/components/primitives';
+import AnimatedServicesSection from '@/components/services';
 import DefaultLayout from '@/layouts/default';
 import { motion } from 'framer-motion';
 
@@ -125,6 +126,7 @@ export default function IndexPage() {
             </div>
           }
         />
+        <AnimatedServicesSection />
         <motion.section
           className="bg-primary/5 rounded-2xl p-8 my-12 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
