@@ -43,7 +43,7 @@ export default function IndexPage() {
           }
           rightSlot={
             <div className="bg-default-100 rounded-xl p-8 h-80 flex items-center justify-center">
-              <p className="text-xl font-semibold text-center">Изображение или инфографика о компании</p>
+              <img src="/image-1.png" alt="О компании Крафт Лаб" className="w-full h-full object-cover" />
             </div>
           }
         />
@@ -51,7 +51,7 @@ export default function IndexPage() {
           reverseOnMobile={true}
           leftSlot={
             <div className="bg-default-100 rounded-xl p-8 h-80 flex items-center justify-center">
-              <p className="text-xl font-semibold text-center">Изображение услуг компании</p>
+              <img src="/image-2.png" alt="Услуги компании Крафт Лаб" className="w-full h-full object-cover" />
             </div>
           }
           rightSlot={
@@ -116,7 +116,7 @@ export default function IndexPage() {
           }
           rightSlot={
             <div className="bg-default-100 rounded-xl p-8 h-80 flex items-center justify-center">
-              <p className="text-xl font-semibold text-center">Изображение преимуществ компании</p>
+              <img src="/image-2.png" alt="Услуги компании Крафт Лаб" className="w-full h-full object-cover" />
             </div>
           }
         />
