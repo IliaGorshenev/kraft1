@@ -10,6 +10,11 @@ const SliderWrapper = styled.div`
   position: relative;
   padding: 20px 0;
   margin: 20px 0;
+  --background-color: #ffffff;
+
+  html.dark & {
+    --background-color: #171717;
+  }
 
   &::before,
   &::after {
@@ -24,27 +29,22 @@ const SliderWrapper = styled.div`
 
   &::before {
     left: 0;
-    background: linear-gradient(to right, var(--background-color, #ffffff), rgba(255, 255, 255, 0));
+    background: linear-gradient(to right, var(--background-color), rgba(255, 255, 255, 0));
   }
 
   &::after {
     right: 0;
-    background: linear-gradient(to left, var(--background-color, #ffffff), rgba(255, 255, 255, 0));
+    background: linear-gradient(to left, var(--background-color), rgba(255, 255, 255, 0));
   }
 
-  .dark & {
-    --background-color: #171717;
+  html.dark &::before {
+    background: linear-gradient(to right, var(--background-color), rgba(23, 23, 23, 0));
+  }
 
-    &::before {
-      background: linear-gradient(to right, var(--background-color, #171717), rgba(23, 23, 23, 0));
-    }
-
-    &::after {
-      background: linear-gradient(to left, var(--background-color, #171717), rgba(23, 23, 23, 0));
-    }
+  html.dark &::after {
+    background: linear-gradient(to left, var(--background-color), rgba(23, 23, 23, 0));
   }
 `;
-
 const SliderTrackForward = styled.div`
   display: flex;
   gap: 40px;
@@ -77,7 +77,6 @@ const SliderTrackBackward = styled.div`
     }
   }
 `;
-
 const PartnerItem = styled(motion.div)`
   flex: 0 0 150px;
   height: 100px;
@@ -88,6 +87,10 @@ const PartnerItem = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   transition: all 0.3s ease;
+
+  html.dark & {
+    background: rgba(23, 23, 23, 0.3);
+  }
 
   &:hover {
     transform: translateY(-5px);
