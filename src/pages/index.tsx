@@ -5,7 +5,7 @@ import ContactForm from '@/components/contact-form';
 import FeatureSection from '@/components/features';
 import PartnersSlider from '@/components/partners-slider';
 import ProductsShowcase from '@/components/products-showcases';
-import RServiceTeaser from '@/components/r-service-teaser';
+
 import AnimatedServicesSection from '@/components/services';
 import DefaultLayout from '@/layouts/default';
 

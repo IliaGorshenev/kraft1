@@ -129,29 +129,7 @@ const AnimatedServicesSection: React.FC = () => {
     }
   };
 
-  // Function to navigate to next/previous service
-  const navigateService = (direction: 'next' | 'prev') => {
-    const currentIndex = servicesContent.findIndex((s) => s.id === activeServiceId);
-    let newIndex;
-
-    if (direction === 'next') {
-      newIndex = Math.min(currentIndex + 1, servicesContent.length - 1);
-      setDirection(1);
-    } else {
-      newIndex = Math.max(currentIndex - 1, 0);
-      setDirection(-1);
-    }
-
-    const newServiceId = servicesContent[newIndex].id;
-    setActiveServiceId(newServiceId);
-
-    // Smooth scroll to the selected service
-    const element = document.getElementById(`service-${newServiceId}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
+ 
   // Progress indicator for visual feedback
   const progress = (servicesContent.findIndex((s) => s.id === activeServiceId) / (servicesContent.length - 1)) * 100;
 
