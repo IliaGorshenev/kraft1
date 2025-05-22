@@ -1,0 +1,126 @@
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.wrapper::before,
+.wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  animation: scroll 60s linear infinite;
+  will-change: transform;
+}
+
+.sliderCard {
+  flex: 0 0 300px;
+  height: 320px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sliderCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(255, 132, 97, 0.2);
+  border-color: rgba(255, 132, 97, 0.3);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #171717;
+}
+
+.text {
+  font-size: 0.875rem;
+  color: #666666;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image {
+  margin-top: auto;
+  object-fit: contain;
+  align-self: center;
+  transition: transform 0.3s ease;
+  max-height: 70px;
+}
+
+.sliderCard:hover .image {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 10 - 20px * 10)); /* Adjust based on card width and gap */
+  }
+}
+
+/* Pause animation on hover */
+.wrapper:hover .slider {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sliderCard {
+    flex: 0 0 260px;
+    height: 300px;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .text {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 4;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-260px * 10 - 20px * 10));
+    }
+  }
+}
+

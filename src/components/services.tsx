@@ -55,9 +55,10 @@ const AnimatedServicesSection: React.FC = () => {
   const [activeServiceId, setActiveServiceId] = useState<string>(servicesContent[0].id);
   const activeService = servicesContent.find((s) => s.id === activeServiceId) || servicesContent[0];
   const [direction, setDirection] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  console.log('Current activeServiceId:', activeServiceId); // <-- ADD THIS
-  console.log('Current activeService title:', activeService.title); // <-- AND THIS
+  console.log('Current activeServiceId:', activeServiceId);
+  console.log('Current activeService title:', activeService.title);
 
   // Enhanced animation variants with more dramatic effects
   const imageVariants = {
@@ -120,26 +121,57 @@ const AnimatedServicesSection: React.FC = () => {
     const newIndex = servicesContent.findIndex((s) => s.id === serviceId);
     setDirection(newIndex > currentIndex ? 1 : -1);
     setActiveServiceId(serviceId);
+
+    // Smooth scroll to the selected service
+    const element = document.getElementById(`service-${serviceId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  // Function to navigate to next/previous service
+  const navigateService = (direction: 'next' | 'prev') => {
+    const currentIndex = servicesContent.findIndex((s) => s.id === activeServiceId);
+    let newIndex;
+
+    if (direction === 'next') {
+      newIndex = Math.min(currentIndex + 1, servicesContent.length - 1);
+      setDirection(1);
+    } else {
+      newIndex = Math.max(currentIndex - 1, 0);
+      setDirection(-1);
+    }
+
+    const newServiceId = servicesContent[newIndex].id;
+    setActiveServiceId(newServiceId);
+
+    // Smooth scroll to the selected service
+    const element = document.getElementById(`service-${newServiceId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   // Progress indicator for visual feedback
   const progress = (servicesContent.findIndex((s) => s.id === activeServiceId) / (servicesContent.length - 1)) * 100;
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 md:mb-24">
           Наши <span className="text-primary">услуги</span>
         </h2>
 
-        {/* Progress bar */}
-        <div className="w-full h-1 bg-gray-200 rounded-full mb-12 relative">
-          <motion.div
-            className="absolute top-0 left-0 h-full bg-primary rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.5 }}
-          />
+        {/* Progress bar with navigation controls */}
+        <div className="flex items-center gap-4 mb-12">
+          <div className="w-full h-1 bg-gray-200 rounded-full relative">
+            <motion.div
+              className="absolute top-0 left-0 h-full bg-primary rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 relative">
@@ -157,7 +189,7 @@ const AnimatedServicesSection: React.FC = () => {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="absolute -bottom-16 -right-22 md:-bottom-12 md:-right-16 text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[15rem] font-bold text-primary select-none z-50"
+                  className="absolute -bottom-28 -right-22 md:-bottom-22 md:-right-16 text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[15rem] font-bold text-primary select-none z-50"
                   style={{ lineHeight: '1', opacity: '0.5' }}>
                   {activeService.displayNumber}
                 </motion.div>
@@ -190,16 +222,6 @@ const AnimatedServicesSection: React.FC = () => {
 
                   {/* Overlay gradient for better text contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-
-                  {/* Service number badge - Force update with key */}
-                  {/* <motion.div
-                    key={`badge-${activeService.id}`}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute top-4 right-4 bg-primary text-white font-bold text-xl w-10 h-10 rounded-full flex items-center justify-center"> */}
-                  {/* {activeService.displayNumber} */}
-                  {/* </motion.div> */}
                 </motion.div>
               </AnimatePresence>
             </div>

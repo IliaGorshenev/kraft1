@@ -1,10 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
-import IndexPage from "@/pages/index";
-import DocsPage from "@/pages/docs";
-import PricingPage from "@/pages/pricing";
-import BlogPage from "@/pages/blog";
-import AboutPage from "@/pages/about";
+import AboutPage from '@/pages/about';
+import BlogPage from '@/pages/blog';
+import DocsPage from '@/pages/docs';
+import IndexPage from '@/pages/index';
+import PricingPage from '@/pages/pricing';
+import RServicePage from '@/pages/r-service';
+import DemoRequestPage from './pages/demo';
+import PartnersPage from './pages/partners';
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
       <Route element={<PricingPage />} path="/pricing" />
       <Route element={<BlogPage />} path="/blog" />
       <Route element={<AboutPage />} path="/about" />
+      <Route element={<PartnersPage />} path="/partners" />
+      <Route element={<RServicePage />} path="/r-service" />
+      <Route element={<DemoRequestPage />} path="/r-service/demo" />
     </Routes>
   );
 }

@@ -1,9 +1,8 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react';
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
-
 
 // Service interface definition
 export interface Service {
@@ -39,5 +38,184 @@ export const servicesContent: Service[] = [
     description:
       'Мы занимаемся реализацией систем управления технологическими процессами (MES) на платформах 1С и ZIIoT, а также автоматизацией управленческих и технологических процессов (АСУТП). Кроме того, мы внедряем системы предиктивной аналитики на основе технологий Python, Flask и scikit-learn.',
     imageSrc: '/image-1.png',
+  },
+];
+
+import aquarius from '../../public/proitsolutions/aquarius.png';
+import astra from '../../public/proitsolutions/astra.png';
+import autofaq from '../../public/proitsolutions/autofaq.png';
+import autograph from '../../public/proitsolutions/autograph.png';
+import depo from '../../public/proitsolutions/depo.png';
+import express from '../../public/proitsolutions/express.png';
+import grav from '../../public/proitsolutions/grav.png';
+import IVATechnologiesLogo from '../../public/proitsolutions/iva.png';
+import KasperskyLogo from '../../public/proitsolutions/kaspersky.png';
+import lenovo from '../../public/proitsolutions/lenovo.png';
+import nanocad from '../../public/proitsolutions/nanocad.png';
+import ntech from '../../public/proitsolutions/ntech.png';
+import openyard from '../../public/proitsolutions/openyard.png';
+import p7 from '../../public/proitsolutions/p7.png';
+import primo from '../../public/proitsolutions/primo.png';
+import psql from '../../public/proitsolutions/psql.png';
+import simpleone from '../../public/proitsolutions/simpleone.png';
+import space from '../../public/proitsolutions/space.png';
+import yadro from '../../public/proitsolutions/yadro.png';
+import zvirt from '../../public/proitsolutions/zvirt.png';
+
+export const partnersData = [
+  {
+    title: 'Space',
+    description: 'Российская платформа виртуализации, предоставляющая комплексное решение для создания и управления виртуальной инфраструктурой',
+    image: space,
+    height: 70,
+    width: 170,
+  },
+  {
+    title: 'zVirt',
+    description: 'Отечественная платформа виртуализации, обеспечивающая высокую производительность и безопасность виртуальных сред',
+    image: zvirt,
+    height: 45,
+    width: 150,
+  },
+  {
+    title: 'Гравитон',
+    description: 'Российский разработчик и производитель высокопроизводительных серверных систем на базе отечественных и зарубежных процессорных архитектур',
+    image: grav,
+    height: 50,
+    width: 240,
+  },
+  {
+    title: 'Лаборатория Касперского',
+    description: 'Международная компания, специализирующаяся на разработке систем защиты от компьютерных вирусов, спама, хакерских атак и прочих киберугроз.',
+    image: KasperskyLogo,
+    height: 41,
+    width: 197,
+  },
+  {
+    title: 'IVA Technologies',
+    description: 'Ведущий игрок российского IT-рынка и лидирующий российский разработчик экосистемы корпоративных коммуникаций.',
+    image: IVATechnologiesLogo,
+    height: 59,
+    width: 82,
+  },
+  {
+    title: 'SimpleOne',
+    description: 'Российский разработчик решений для автоматизации сервисных бизнес-процессов. Входит в международную группу компаний ITGLOBAL.COM',
+    image: simpleone,
+    height: 18,
+    width: 128,
+  },
+  {
+    title: 'Р7-Офис',
+    description: 'Российский кроссплатформенный пакет приложений для совместной работы с офисными документами',
+    image: p7,
+    height: 35,
+    width: 127,
+  },
+  {
+    title: 'Lenovo',
+    description:
+      'Является крупнейшим производителем персональных компьютеров в мире с долей на рынке более 20 %, а также занимает пятое место по производству мобильных телефонов',
+    image: lenovo,
+    height: 19,
+    width: 97,
+  },
+  {
+    title: 'DEPO Computers',
+    description:
+      'Российская IT-компания, cистемообразующее предприятие отечественной радиоэлектронной промышленности. Имеет стратегическое значение для обеспечения информационной безопасности государства',
+    image: depo,
+    height: 39,
+    width: 67,
+  },
+  {
+    title: 'AutoFAQ',
+    description: 'Искусственный интеллект для клиентского сервиса и внутренних коммуникаций',
+    image: autofaq,
+    height: 31,
+    width: 108,
+  },
+  {
+    title: 'NtechLab',
+    description:
+      'Российская компания, создатель решений на основе собственных алгоритмов распознавания лиц и силуэтов. Продукты компании востребованы в сферах общественной и корпоративной безопасности, розничной торговли',
+    image: ntech,
+    height: 31,
+    width: 100,
+  },
+  {
+    title: 'PostgreSQL',
+    description:
+      'Cвободная объектно-реляционная система управления базами данных. Существует в реализациях для множества UNIX-подобных платформ, включая различные BSD-системы',
+    image: psql,
+    height: 38,
+    width: 103,
+  },
+  {
+    title: 'Astra Linux',
+    description: 'Операционная система на базе ядра Linux, которая внедряется в России в качестве альтернативы Microsoft Windows в государственных организациях',
+    image: astra,
+    height: 33,
+    width: 95,
+  },
+  {
+    title: 'Автограф',
+    description:
+      'Компания создает продукты в области программного обеспечения формирования технической документации, построенные на собственном графическом ядре без использования иностранных компонентов',
+    image: autograph,
+    height: 52,
+    width: 81,
+  },
+  {
+    title: 'Open Yard',
+    description:
+      'Производитель серверного оборудования. Благодаря собственному производству, технологиям и интеллектуальной собственности, мы обеспечиваем поддержку и развитие решений в любых условиях',
+    image: openyard,
+    height: 22,
+    width: 124,
+  },
+  {
+    title: 'Astra Linux',
+    description: 'Операционная система на базе ядра Linux, которая внедряется в России в качестве альтернативы Microsoft Windows в государственных организациях',
+    image: astra,
+    height: 33,
+    width: 95,
+  },
+  {
+    title: 'Аквариус',
+    description: 'Крупнейший российский разработчик и производитель компьютерной техники и ИТ-решений, системообразующее предприятие',
+    image: aquarius,
+    height: 26,
+    width: 119,
+  },
+  {
+    title: 'YADRO',
+    description: 'Технологическая компания, сосредоточенная на изменении подхода бизнеса к вызовам технологической трансформации',
+    image: yadro,
+    height: 50,
+    width: 50,
+  },
+  {
+    title: 'Primo RPA',
+    description:
+      'Полнофункциональная платформа для внедрения роботизации любой сложности и масштаба: от запуска роботов-ассистентов до полной автоматизации ключевых бизнес-процессов',
+    image: primo,
+    height: 39,
+    width: 95,
+  },
+  {
+    title: 'eXpress',
+    description:
+      'Платформа корпоративных коммуникаций и мобильности, единственный на сегодняшний момент сертифицированный ФСТЭК России по 4-му уровню доверия корпоративный суперапп с инсталляциями в крупных компаниях',
+    image: express,
+    height: 47,
+    width: 55,
+  },
+  {
+    title: 'nanoCAD',
+    description: 'Российский разработчик инженерного ПО: технологий автоматизированного проектирования (САПР/CAD), информационного моделирования (ТИМ/BIM)',
+    image: nanocad,
+    height: 50,
+    width: 91,
   },
 ];

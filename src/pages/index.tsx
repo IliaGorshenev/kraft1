@@ -1,29 +1,37 @@
 import { Link } from '@heroui/link';
 import { button as buttonStyles } from '@heroui/theme';
 
+import ContactForm from '@/components/contact-form';
 import FeatureSection from '@/components/features';
-import { subtitle, title } from '@/components/primitives';
+import PartnersSlider from '@/components/partners-slider';
+import ProductsShowcase from '@/components/products-showcases';
+import RServiceTeaser from '@/components/r-service-teaser';
 import AnimatedServicesSection from '@/components/services';
 import DefaultLayout from '@/layouts/default';
-import { motion } from 'framer-motion';
 
 export default function IndexPage() {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-16">
-        <motion.div
+        {/* <motion.div
           className="inline-block max-w-2xl text-center justify-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}>
-          <span className={title()}>Разработка </span>
-          <span className={title()}>IT-решений </span>
-          <br />
-          <span className={title()}>для бизнеса любой сложности</span>
+          <div className={title()}>
+            <span>Разработка </span>
+            <TypeWriter
+              texts={['IT-решений', 'веб-приложений', 'мобильных приложений', 'корпоративных систем']}
+              typingSpeed={30}
+              deletingSpeed={20}
+              delayBetweenTexts={1000}
+              className={title()}
+            />
+          </div>
           <motion.div className={subtitle({ class: 'mt-6 mx-auto' })} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}>
             Мы создаем современные веб-приложения, мобильные решения и корпоративные системы, которые помогают бизнесу расти и развиваться
           </motion.div>
-        </motion.div>
+        </motion.div> */}
 
         <FeatureSection
           leftSlot={
@@ -53,7 +61,7 @@ export default function IndexPage() {
             </div>
           }
         />
-        <FeatureSection
+        {/* <FeatureSection
           reverseOnMobile={true}
           leftSlot={
             <div className="bg-default-100 rounded-xl p-8 h-80 flex items-center justify-center">
@@ -94,9 +102,9 @@ export default function IndexPage() {
               </ul>
             </div>
           }
-        />
+        /> */}
         <FeatureSection
-          leftSlot={
+          rightSlot={
             <div>
               <h2 className="text-3xl font-bold mb-4">Наши преимущества</h2>
               <p className="text-default-600 mb-6">Мы стремимся предоставлять нашим клиентам лучшие решения, которые отвечают их бизнес-потребностям.</p>
@@ -120,32 +128,17 @@ export default function IndexPage() {
               </div>
             </div>
           }
-          rightSlot={
+          leftSlot={
             <div className="bg-default-100 rounded-xl p-8 h-80 flex items-center justify-center">
               <img src="/image-2.png" alt="Услуги компании Крафт Лаб" className="w-full h-full object-cover" />
             </div>
           }
         />
         <AnimatedServicesSection />
-        <motion.section
-          className="bg-primary/5 rounded-2xl p-8 my-12 text-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}>
-          <h2 className="text-3xl font-bold mb-4">Готовы обсудить ваш проект?</h2>
-          <p className="text-default-600 max-w-2xl mx-auto mb-6">Свяжитесь с нами, чтобы получить консультацию и узнать, как мы можем помочь вашему бизнесу.</p>
-          <Link
-            className={buttonStyles({
-              color: 'primary',
-              radius: 'full',
-              variant: 'shadow',
-              size: 'lg',
-            })}
-            href="/contacts">
-            Связаться с нами
-          </Link>
-        </motion.section>
+        {/* <RServiceTeaser /> */}
+        <PartnersSlider />
+        <ProductsShowcase />
+        <ContactForm />
       </section>
     </DefaultLayout>
   );
