@@ -4,22 +4,27 @@ import { button as buttonStyles } from '@heroui/theme';
 import FeatureSection from '@/components/features';
 import { subtitle, title } from '@/components/primitives';
 import DefaultLayout from '@/layouts/default';
+import { motion } from 'framer-motion';
 
 export default function IndexPage() {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-16">
-        <div className="inline-block max-w-2xl text-center justify-center">
+        <motion.div
+          className="inline-block max-w-2xl text-center justify-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}>
           <span className={title()}>Разработка </span>
           <span className={title()}>IT-решений </span>
           <br />
           <span className={title()}>для бизнеса любой сложности</span>
-          <div className={subtitle({ class: 'mt-6 mx-auto' })}>
+          <motion.div className={subtitle({ class: 'mt-6 mx-auto' })} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}>
             Мы создаем современные веб-приложения, мобильные решения и корпоративные системы, которые помогают бизнесу расти и развиваться
-          </div>
-        </div>
-        <FeatureSection
+          </motion.div>
+        </motion.div>
 
+        <FeatureSection
           leftSlot={
             <div>
               <h2 className="text-3xl font-bold mb-4">О компании</h2>
@@ -120,7 +125,12 @@ export default function IndexPage() {
             </div>
           }
         />
-        <section className="bg-primary/5 rounded-2xl p-8 my-12 text-center">
+        <motion.section
+          className="bg-primary/5 rounded-2xl p-8 my-12 text-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}>
           <h2 className="text-3xl font-bold mb-4">Готовы обсудить ваш проект?</h2>
           <p className="text-default-600 max-w-2xl mx-auto mb-6">Свяжитесь с нами, чтобы получить консультацию и узнать, как мы можем помочь вашему бизнесу.</p>
           <Link
@@ -133,7 +143,7 @@ export default function IndexPage() {
             href="/contacts">
             Связаться с нами
           </Link>
-        </section>
+        </motion.section>
       </section>
     </DefaultLayout>
   );

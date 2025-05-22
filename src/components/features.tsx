@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface FeatureSectionProps {
   leftSlot: React.ReactNode;
@@ -26,12 +27,24 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
       <div
         className={`flex ${mobileOrderClasses} lg:flex-row gap-8 xl:gap-12 items-center ${className}`}
       >
-        <div className={`w-full ${leftColumnWeight}`}>
+        <motion.div 
+          className={`w-full ${leftColumnWeight}`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           {leftSlot}
-        </div>
-        <div className={`w-full ${rightColumnWeight}`}>
+        </motion.div>
+        <motion.div 
+          className={`w-full ${rightColumnWeight}`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+        >
           {rightSlot}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
