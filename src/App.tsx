@@ -8,6 +8,7 @@ import PricingPage from '@/pages/pricing';
 import RServicePage from '@/pages/r-service';
 import DemoRequestPage from './pages/demo';
 import PartnersPage from './pages/partners';
+import CustomersPage from './pages/customers';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route element={<PartnersPage />} path="/partners" />
       <Route element={<RServicePage />} path="/r-service" />
       <Route element={<DemoRequestPage />} path="/r-service/demo" />
+      <Route element={<CustomersPage />} path="/customers" />
     </Routes>
   );
 }

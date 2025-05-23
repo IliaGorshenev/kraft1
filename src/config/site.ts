@@ -6,7 +6,7 @@ export const siteConfig = {
   navItems: [
     {
       label: "о компании",
-      href: "#about",
+      href: "/about",
     },
     {
       label: "наши услуги",
@@ -28,7 +28,7 @@ export const siteConfig = {
   navMenuItems: [
     {
       label: "о компании",
-      href: "#about",
+      href: "/about",
     },
     {
       label: "наши услуги",
