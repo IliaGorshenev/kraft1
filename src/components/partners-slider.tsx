@@ -44,6 +44,16 @@ const SliderWrapper = styled.div`
   html.dark &::after {
     background: linear-gradient(to left, var(--background-color), rgba(23, 23, 23, 0));
   }
+
+  @media (max-width: 768px) {
+    padding: 10px 0;
+    margin: 10px 0;
+
+    &::before,
+    &::after {
+      width: 50px;
+    }
+  }
 `;
 const SliderTrackForward = styled.div`
   display: flex;
@@ -60,6 +70,20 @@ const SliderTrackForward = styled.div`
       transform: translateX(calc(-150px * ${partnersData.length / 2} - 40px * ${partnersData.length / 2}));
     }
   }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @keyframes scrollForward {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-100px * ${partnersData.length / 2} - 20px * ${partnersData.length / 2}));
+      }
+    }
+  }
 `;
 
 const SliderTrackBackward = styled.div`
@@ -74,6 +98,19 @@ const SliderTrackBackward = styled.div`
     }
     100% {
       transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+
+    @keyframes scrollBackward {
+      0% {
+        transform: translateX(calc(-100px * ${partnersData.length / 2} - 20px * ${partnersData.length / 2}));
+      }
+      100% {
+        transform: translateX(0);
+      }
     }
   }
 `;
@@ -111,6 +148,27 @@ const PartnerItem = styled(motion.div)`
     filter: grayscale(0%);
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    flex: 0 0 100px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 8px;
+
+    img {
+      max-height: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex: 0 0 80px;
+    height: 60px;
+    padding: 8px;
+
+    img {
+      max-height: 40px;
+    }
+  }
 `;
 
 const PartnersSlider: React.FC = () => {
@@ -123,10 +181,10 @@ const PartnersSlider: React.FC = () => {
   const duplicatedSecondHalf = [...secondHalf, ...secondHalf, ...secondHalf];
 
   return (
-    <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="py-12">
-      <div className="container mx-auto px-4">
+    <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="py-12  max-w-full overflow-hidden  md:py-8">
+      <div className="container mx-autopx-4">
         <motion.h2
-          className="text-3xl font-bold text-center mb-8"
+          className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -170,14 +228,14 @@ const PartnersSlider: React.FC = () => {
           </SliderTrackBackward>
         </SliderWrapper>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-6 md:mt-8">
           <motion.a
             href="/partners"
-            className="inline-flex items-center text-primary font-medium hover:underline"
+            className="inline-flex items-center text-primary font-medium hover:underline text-sm md:text-base"
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
             <span>Все партнеры</span>
-            <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="ml-1 md:ml-2 w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </motion.a>

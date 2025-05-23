@@ -3,7 +3,7 @@ import { Navbar as HeroUINavbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { link as linkStyles } from '@heroui/theme';
 import clsx from 'clsx';
 
-import { GithubIcon, Logo, TwitterIcon } from '@/components/icons';
+import { GithubIcon, Logo } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 
@@ -33,9 +33,9 @@ export const Navbar = () => {
 
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal href={siteConfig.links.twitter} title="Twitter">
+          {/* <Link isExternal href={siteConfig.links.twitter} title="Twitter">
             <TwitterIcon className="text-default-500" />
-          </Link>
+          </Link> */}
 
           <ThemeSwitch />
         </NavbarItem>
@@ -53,7 +53,7 @@ export const Navbar = () => {
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link color={index === 2 ? 'primary' : index === siteConfig.navMenuItems.length - 1 ? 'danger' : 'foreground'} href="#" size="lg">
+              <Link color={'foreground'} href="#" size="lg">
                 {item.label}
               </Link>
             </NavbarMenuItem>

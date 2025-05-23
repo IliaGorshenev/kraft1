@@ -1,6 +1,7 @@
 import { Service, servicesContent } from '@/types';
 import { AnimatePresence, motion, useInView } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Enhanced ServiceTextItem component with better scroll detection
 const ServiceTextItem: React.FC<{
@@ -40,7 +41,7 @@ const ServiceTextItem: React.FC<{
       {isActive && (
         <motion.div className="mt-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
           <div className="inline-flex items-center text-primary font-medium">
-            <span>Узнать подробнее</span>
+          <Link to={`/services/${service.id}`}>Узнать подробнее</Link>
             <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -51,11 +52,63 @@ const ServiceTextItem: React.FC<{
   );
 };
 
+
+// Mobile service card component for grid layout
+const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={service.imageSrc}
+          alt={service.title}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = 'https://via.placeholder.com/600x400?text=Service+Image';
+          }}
+        />
+        <div className="absolute top-4 right-4 bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">{service.displayNumber}</div>
+      </div>
+      <div className="p-6 flex-grow flex flex-col">
+        <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
+        <p className="text-default-600 flex-grow">{service.description}</p>
+        <div className="mt-4 inline-flex items-center text-primary font-medium">
+        <Link to={`/services/${service.id}`}>Узнать подробнее</Link>
+          <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const AnimatedServicesSection: React.FC = () => {
   const [activeServiceId, setActiveServiceId] = useState<string>(servicesContent[0].id);
   const activeService = servicesContent.find((s) => s.id === activeServiceId) || servicesContent[0];
   const [direction, setDirection] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Check if screen is desktop (>= 1200px)
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1200);
+    };
+
+    // Initial check
+    checkScreenSize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   console.log('Current activeServiceId:', activeServiceId);
   console.log('Current activeService title:', activeService.title);
@@ -129,7 +182,6 @@ const AnimatedServicesSection: React.FC = () => {
     }
   };
 
- 
   // Progress indicator for visual feedback
   const progress = (servicesContent.findIndex((s) => s.id === activeServiceId) / (servicesContent.length - 1)) * 100;
 
@@ -140,78 +192,90 @@ const AnimatedServicesSection: React.FC = () => {
           Наши <span className="text-primary">услуги</span>
         </h2>
 
-        {/* Progress bar with navigation controls */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="w-full h-1 bg-gray-200 rounded-full relative">
-            <motion.div
-              className="absolute top-0 left-0 h-full bg-primary rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 relative">
-          {/* Sticky Visual Pane */}
-          <div className="lg:w-1/2 lg:sticky lg:top-[25vh] h-[60vh] flex items-center justify-center p-4 order-1 lg:order-1">
-            <div className="relative w-full h-full max-w-lg flex items-center justify-center">
-              {/* Background gradient for visual appeal */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl" />
-
-              {/* Animated Number */}
-              <AnimatePresence initial={false} mode="wait">
+        {/* Desktop version - Animated scrolling layout */}
+        {isDesktop ? (
+          <>
+            {/* Progress bar with navigation controls */}
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-full h-1 bg-gray-200 rounded-full relative">
                 <motion.div
-                  key={activeService.id + '-number'}
-                  variants={numberVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="absolute -bottom-28 -right-22 md:-bottom-22 md:-right-16 text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[15rem] font-bold text-primary select-none z-50"
-                  style={{ lineHeight: '1', opacity: '0.5' }}>
-                  {activeService.displayNumber}
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Animated Image with enhanced effects */}
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  key={activeService.id + '-image'}
-                  custom={direction}
-                  variants={imageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="relative z-2 w-full max-w-sm sm:max-w-md aspect-[4/5] rounded-xl overflow-hidden"
-                  style={{
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                    transformStyle: 'preserve-3d',
-                    perspective: '1000px',
-                  }}>
-                  <img
-                    src={activeService.imageSrc}
-                    alt={activeService.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback for missing images
-                      e.currentTarget.src = 'https://via.placeholder.com/600x800?text=Service+Image';
-                    }}
-                  />
-
-                  {/* Overlay gradient for better text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                </motion.div>
-              </AnimatePresence>
+                  className="absolute top-0 left-0 h-full bg-primary rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.5 }}
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Scrollable Text Pane */}
-          <div className="lg:w-1/2 space-y-8 order-2 lg:order-2">
+            <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 relative">
+              {/* Sticky Visual Pane */}
+              <div className="lg:w-1/2 lg:sticky lg:top-[25vh] h-[60vh] flex items-center justify-center p-4 order-1 lg:order-1">
+                <div className="relative w-full h-full max-w-lg flex items-center justify-center">
+                  {/* Background gradient for visual appeal */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl" />
+
+                  {/* Animated Number */}
+                  <AnimatePresence initial={false} mode="wait">
+                    <motion.div
+                      key={activeService.id + '-number'}
+                      variants={numberVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      className="absolute -bottom-28 -right-22 md:-bottom-22 md:-right-16 text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[15rem] font-bold text-primary select-none z-50"
+                      style={{ lineHeight: '1', opacity: '0.5' }}>
+                      {activeService.displayNumber}
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Animated Image with enhanced effects */}
+                  <AnimatePresence initial={false} mode="wait">
+                    <motion.div
+                      key={activeService.id + '-image'}
+                      custom={direction}
+                      variants={imageVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      className="relative z-2 w-full max-w-sm sm:max-w-md aspect-[4/5] rounded-xl overflow-hidden"
+                      style={{
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                        transformStyle: 'preserve-3d',
+                        perspective: '1000px',
+                      }}>
+                      <img
+                        src={activeService.imageSrc}
+                        alt={activeService.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          // Fallback for missing images
+                          e.currentTarget.src = 'https://via.placeholder.com/600x800?text=Service+Image';
+                        }}
+                      />
+
+                      {/* Overlay gradient for better text contrast */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Scrollable Text Pane */}
+              <div className="lg:w-1/2 space-y-8 order-2 lg:order-2">
+                {servicesContent.map((service) => (
+                  <ServiceTextItem key={service.id} service={service} onInView={() => handleSetActiveService(service.id)} isActive={service.id === activeServiceId} />
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          /* Mobile version - Simple grid layout */
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {servicesContent.map((service) => (
-              <ServiceTextItem key={service.id} service={service} onInView={() => handleSetActiveService(service.id)} isActive={service.id === activeServiceId} />
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

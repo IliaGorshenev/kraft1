@@ -134,10 +134,27 @@ export default function IndexPage() {
             </div>
           }
         />
+        <Link
+          className={buttonStyles({
+            color: 'primary',
+            variant: 'flat',
+          })}
+          href="/advantages">
+          Про наши преимущства
+        </Link>
+        <ProductsShowcase />
+
+        <PartnersSlider />
         <AnimatedServicesSection />
         {/* <RServiceTeaser /> */}
-        <PartnersSlider />
-        <ProductsShowcase />
+        <Link
+          className={buttonStyles({
+            color: 'primary',
+            variant: 'flat',
+          })}
+          href="/services">
+          Все услуги
+        </Link>
         <ContactForm />
       </section>
     </DefaultLayout>

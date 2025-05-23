@@ -1,235 +1,212 @@
+import { subtitle, title } from '@/components/primitives';
 import DefaultLayout from '@/layouts/default';
-import { motion } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
-import styles from '../styles/partners.module.css';
 import { partnersData } from '@/types';
+import { Link } from '@heroui/link';
+import { button as buttonStyles } from '@heroui/theme';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
+// Animation variants for staggered animations
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
-const AnimatedPartnersSection = () => {
-  // Clone the partners data to create a seamless infinite scroll effect
-  const duplicatedPartners = [...partnersData, ...partnersData];
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
-  // State for active partner (for potential highlighting)
-  const [activePartner, setActivePartner] = useState(0);
-  
-  // Refs for the sliders
-  const infiniteSliderRef = useRef<HTMLDivElement>(null);
-  const featuredSliderRef = useRef<HTMLDivElement>(null);
-  
-  // State to track if user is dragging the slider
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  
-  // State for featured partners section
-  const [featuredScrollPosition, setFeaturedScrollPosition] = useState(0);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
+const PartnerCard = ({ partner, isActive }: any) => {
+  return (
+    <motion.div
+      variants={itemVariants}
+      className={`bg-background rounded-xl p-6 h-full flex flex-col transition-all duration-300 ${
+        isActive ? 'ring-2 ring-primary shadow-lg shadow-primary/10' : 'shadow-md hover:shadow-xl'
+      }`}
+      whileHover={{ y: -5 }}>
+      <h3 className="text-xl font-semibold mb-3">{partner.title}</h3>
+      <p className="text-default-600 mb-6 flex-grow text-sm">{partner.description}</p>
+      <div className="mt-auto flex justify-center items-center h-24 border-t pt-4">
+        <img
+          src={partner.image}
+          alt={partner.title}
+          className="max-h-full object-contain transition-transform duration-300 hover:scale-110"
+          width={partner.width}
+          height={partner.height}
+        />
+      </div>
+    </motion.div>
+  );
+};
 
-  // Auto-advance the active partner every few seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActivePartner((prev) => (prev + 1) % partnersData.length);
-    }, 3000);
+const PartnersGrid = ({ partners, activePartner, setActivePartner }: any) => {
+  return (
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}>
+      {partners.map((partner: any, index: any) => (
+        <div key={index} onMouseEnter={() => setActivePartner(index)} onClick={() => setActivePartner(index)}>
+          <PartnerCard partner={partner} index={index} isActive={activePartner === index} />
+        </div>
+      ))}
+    </motion.div>
+  );
+};
 
-    return () => clearInterval(interval);
-  }, []);
-  
-  // Check if scroll arrows should be visible
-  useEffect(() => {
-    const checkScroll = () => {
-      if (featuredSliderRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = featuredSliderRef.current;
-        setShowLeftArrow(scrollLeft > 0);
-        setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
-        setFeaturedScrollPosition(scrollLeft);
-      }
-    };
-    
-    checkScroll();
-    
-    const slider = featuredSliderRef.current;
-    if (slider) {
-      slider.addEventListener('scroll', checkScroll);
-      return () => slider.removeEventListener('scroll', checkScroll);
-    }
-  }, []);
+const PartnersHero = () => {
+  return (
+    <motion.div
+      className="mb-16 text-center flex flex-col items-center justify-center"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}>
+      <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Технологическая экосистема</div>
+      <h1 className={title({ class: 'mb-4' })}>
+        Наши <span className="text-primary">партнеры</span>
+      </h1>
+      <p className={subtitle({ class: 'mx-auto' })}>
+        Мы сотрудничаем с ведущими российскими и международными компаниями, чтобы предоставлять нашим клиентам лучшие технологические решения.
+      </p>
+    </motion.div>
+  );
+};
+const PartnerStats = () => {
+  return (
+    <motion.div
+      className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}>
+      {[
+        { value: '20+', label: 'Технологических партнеров' },
+        { value: '50+', label: 'Совместных проектов' },
+        { value: '5+', label: 'Лет сотрудничества' },
+        { value: '100%', label: 'Довольных клиентов' },
+      ].map((stat, index) => (
+        <div key={index} className="bg-default-50 rounded-xl p-6 text-center">
+          <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+          <div className="text-default-600 text-sm">{stat.label}</div>
+        </div>
+      ))}
+    </motion.div>
+  );
+};
 
-  // Mouse event handlers for dragging
-  const handleMouseDown = (e: React.MouseEvent, ref: React.RefObject<HTMLDivElement>) => {
-    if (!ref.current) return;
-    
-    setIsDragging(true);
-    setStartX(e.pageX - ref.current.offsetLeft);
-    setScrollLeft(ref.current.scrollLeft);
-    
-    // Change cursor style
-    if (ref.current) ref.current.style.cursor = 'grabbing';
-  };
+const PartnershipCTA = () => {
+  return (
+    <motion.div
+      className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-8 md:p-12 mt-16"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">Станьте нашим партнером</h3>
+          <p className="text-default-600 max-w-xl">
+            Присоединяйтесь к нашей партнерской программе и получите доступ к новым возможностям для развития вашего бизнеса. Мы предлагаем выгодные условия
+            сотрудничества и поддержку на всех этапах.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-4">
+          <Link
+            href="/contact"
+            className={buttonStyles({
+              color: 'primary',
+              variant: 'shadow',
+              size: 'lg',
+            })}>
+            Стать партнером
+          </Link>
+          <Link
+            href="/partners/program"
+            className={buttonStyles({
+              color: 'default',
+              variant: 'bordered',
+              size: 'lg',
+            })}>
+            Узнать подробнее
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
-  const handleMouseUp = (ref: React.RefObject<HTMLDivElement>) => {
-    setIsDragging(false);
-    
-    // Reset cursor style
-    if (ref.current) ref.current.style.cursor = 'grab';
-  };
-
-  const handleMouseMove = (e: React.MouseEvent, ref: React.RefObject<HTMLDivElement>) => {
-    if (!isDragging || !ref.current) return;
-    
-    e.preventDefault();
-    const x = e.pageX - ref.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    ref.current.scrollLeft = scrollLeft - walk;
-  };
-  
-  // Button scroll handlers
-  const scrollFeatured = (direction: 'left' | 'right') => {
-    if (!featuredSliderRef.current) return;
-    
-    const scrollAmount = 300; // Adjust as needed
-    const newScrollLeft = direction === 'left' 
-      ? featuredSliderRef.current.scrollLeft - scrollAmount 
-      : featuredSliderRef.current.scrollLeft + scrollAmount;
-      
-    featuredSliderRef.current.scrollTo({
-      left: newScrollLeft,
-      behavior: 'smooth'
-    });
-  };
+const PartnerCategories = () => {
+  const categories = [
+    { name: 'Технологические', icon: '🔧' },
+    { name: 'Интеграционные', icon: '🔄' },
+    { name: 'Дистрибьюторы', icon: '🚚' },
+    { name: 'Консалтинговые', icon: '📊' },
+  ];
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          Наши <span className="text-primary">партнеры</span>
-        </motion.h2>
+    <motion.div className="mb-16" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+      <motion.h2 className="text-2xl font-bold mb-8 text-center" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        Типы партнерства
+      </motion.h2>
 
-        <motion.div className="mb-12" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}>
-          <p className="text-default-600 text-center max-w-2xl mx-auto">
-            Мы сотрудничаем с ведущими российскими и международными компаниями, чтобы предоставлять нашим клиентам лучшие технологические решения.
-          </p>
-        </motion.div>
-
-        {/* Infinite scroll partners carousel */}
-        <div className={styles.wrapper}>
-          <div 
-            ref={infiniteSliderRef}
-            className={`${styles.slider} cursor-grab`}
-            onMouseDown={(e) => handleMouseDown(e, infiniteSliderRef)}
-            onMouseUp={() => handleMouseUp(infiniteSliderRef)}
-            onMouseLeave={() => handleMouseUp(infiniteSliderRef)}
-            onMouseMove={(e) => handleMouseMove(e, infiniteSliderRef)}
-          >
-            {duplicatedPartners.map((partner, index) => (
-              <motion.div
-                key={index}
-                className={styles.sliderCard}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  boxShadow: index % partnersData.length === activePartner ? '0 8px 30px rgba(255, 132, 97, 0.15)' : '0 4px 12px rgba(0, 0, 0, 0.08)',
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: (index * 0.05) % 1, // Stagger the initial animation
-                }}>
-                <h3 className={styles.title}>{partner.title}</h3>
-                <p className={styles.text}>{partner.description}</p>
-                <div className="mt-auto flex justify-center">
-                  <img src={partner.image} alt={partner.title} className={styles.image} width={partner.width} height={partner.height} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Additional section with featured partners */}
-        <motion.div className="mt-24 relative" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
-          <h3 className="text-2xl font-bold text-center mb-8">Ключевые партнеры</h3>
-
-          {/* Navigation arrows */}
-          {showLeftArrow && (
-            <button 
-              onClick={() => scrollFeatured('left')}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
-              aria-label="Scroll left"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-          )}
-          
-          {showRightArrow && (
-            <button 
-              onClick={() => scrollFeatured('right')}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
-              aria-label="Scroll right"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          )}
-
-          <div 
-            ref={featuredSliderRef}
-            className="flex overflow-x-auto pb-4 hide-scrollbar cursor-grab"
-            style={{ scrollBehavior: 'smooth' }}
-            onMouseDown={(e) => handleMouseDown(e, featuredSliderRef)}
-            onMouseUp={() => handleMouseUp(featuredSliderRef)}
-            onMouseLeave={() => handleMouseUp(featuredSliderRef)}
-            onMouseMove={(e) => handleMouseMove(e, featuredSliderRef)}
-          >
-            {partnersData.slice(0, 5).map((partner, index) => (
-              <motion.div
-                key={`featured-${index}`}
-                className="flex flex-col items-center p-4 rounded-lg hover:bg-default-50 transition-colors flex-shrink-0 w-[200px] mx-2"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}>
-                <img src={partner.image} alt={partner.title} width={partner.width * 1.2} height={partner.height * 1.2} className="mb-4" />
-                <p className="text-center font-medium">{partner.title}</p>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Scroll indicator dots */}
-          <div className="flex justify-center mt-4 gap-2">
-            {Array.from({ length: Math.ceil(partnersData.length / 3) }).map((_, i) => (
-              <button
-                key={i}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  featuredScrollPosition > i * 600 && featuredScrollPosition < (i + 1) * 600
-                    ? 'bg-primary'
-                    : 'bg-gray-300'
-                }`}
-                onClick={() => {
-                  if (featuredSliderRef.current) {
-                    featuredSliderRef.current.scrollTo({
-                      left: i * 600,
-                      behavior: 'smooth'
-                    });
-                  }
-                }}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-        </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {categories.map((category, index) => (
+          <motion.div
+            key={index}
+            className="bg-default-50 rounded-xl p-6 text-center hover:bg-primary/5 transition-colors"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            whileHover={{ y: -5 }}>
+            <div className="text-4xl mb-4">{category.icon}</div>
+            <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
+            <p className="text-default-600 text-sm">
+              {category.name === 'Технологические' && 'Компании, чьи технологии и продукты мы интегрируем в наши решения'}
+              {category.name === 'Интеграционные' && 'Партнеры, помогающие внедрять наши решения у клиентов'}
+              {category.name === 'Дистрибьюторы' && 'Компании, распространяющие наши продукты на рынке'}
+              {category.name === 'Консалтинговые' && 'Эксперты, предоставляющие консультации по нашим решениям'}
+            </p>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </motion.div>
   );
 };
 
 export default function PartnersPage() {
+  const [activePartner, setActivePartner] = useState(null);
+
+  // Group partners by type for display purposes
+  // This is just a visual grouping since your data doesn't have categories
+  const featuredPartners = partnersData.slice(0, 6); // First 6 partners for carousel
+  const allPartners = partnersData; // All partners for grid
+
   return (
     <DefaultLayout>
-      <AnimatedPartnersSection />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <PartnersHero />
+
+        <PartnerStats />
+
+        <motion.div className="mb-16">
+          <motion.h2 className="text-2xl font-bold mb-8" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            Все партнеры
+          </motion.h2>
+
+          <PartnersGrid partners={allPartners} activePartner={activePartner} setActivePartner={setActivePartner} />
+        </motion.div>
+
+        <PartnershipCTA />
+      </div>
     </DefaultLayout>
   );
 }
-
-// Export the component for use in other files if needed
-export { AnimatedPartnersSection };

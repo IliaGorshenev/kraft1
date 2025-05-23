@@ -1,3 +1,4 @@
+import ContactForm from '@/components/contact-form';
 import { subtitle, title } from '@/components/primitives';
 import RServiceSection from '@/components/r-service-section';
 import DefaultLayout from '@/layouts/default';
@@ -369,36 +370,7 @@ export default function RServicePage() {
         </section>
 
         {/* Final CTA */}
-        <motion.div className="w-full py-16" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-primary/80 to-primary rounded-2xl p-8 md:p-12 text-white text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Готовы упорядочить бизнес-процессы?</h2>
-              <p className="text-white/90 max-w-2xl mx-auto mb-8 text-lg">
-                Запросите демонстрацию R-Service и узнайте, как наша платформа может трансформировать управление сервисами в вашей компании.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  className={buttonStyles({
-                    color: 'default',
-                    variant: 'solid',
-                    size: 'lg',
-                  })}
-                  href="/r-service/demo">
-                  Запросить демо
-                </Link>
-                <Link
-                  className={buttonStyles({
-                    color: 'primary',
-                    variant: 'bordered',
-                    size: 'lg',
-                  })}
-                  href="/r-service/pricing">
-                  Узнать стоимость
-                </Link>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        <ContactForm />
       </section>
     </DefaultLayout>
   );

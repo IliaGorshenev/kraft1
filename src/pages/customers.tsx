@@ -1,3 +1,4 @@
+import ContactForm from '@/components/contact-form';
 import { subtitle, title } from '@/components/primitives';
 import DefaultLayout from '@/layouts/default';
 import { Link } from '@heroui/link';
@@ -354,40 +355,7 @@ export default function CustomersPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16 md:py-20 bg-primary/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Готовы повысить эффективность вашего бизнеса?</h2>
-            <p className="text-default-600 text-lg mb-8">Присоединяйтесь к сотням компаний, которые уже оптимизировали свои процессы с помощью наших решений</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                className={buttonStyles({
-                  color: 'primary',
-                  variant: 'shadow',
-                  size: 'lg',
-                })}
-                href="/contact">
-                Обсудить проект
-              </Link>
-              <Link
-                className={buttonStyles({
-                  color: 'default',
-                  variant: 'bordered',
-                  size: 'lg',
-                })}
-                href="/r-service/demo">
-                Запросить демо
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <ContactForm />
     </DefaultLayout>
   );
 }
