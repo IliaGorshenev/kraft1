@@ -14,7 +14,9 @@ export default function ServiceDetailPage() {
     return (
       <DefaultLayout>
         <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className={title({ color: 'blue', size: 'lg' })}>Услуга не найдена</h1>
+          <h1 className={title({ size: 'lg' })}>
+            Услуга <span className="text-primary">не найдена</span>
+          </h1>
           <p className="mt-4 mb-8">Запрашиваемая услуга не существует или была удалена.</p>
           <Link to="/services" className="inline-flex items-center text-primary font-medium hover:underline">
             <svg className="mr-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,7 +42,9 @@ export default function ServiceDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium inline-block mb-4">{service.displayNumber}</div>
-            <h1 className={title({ color: 'blue', size: 'lg' })}>{service.title}</h1>
+            <h1 className={title({ size: 'lg' })}>
+              <span className="text-primary">{service.title}</span>
+            </h1>
 
             <div className="mt-8 prose prose-lg max-w-none">
               <p className="text-lg text-default-600 mb-8">{service.description}</p>
@@ -82,6 +86,8 @@ export default function ServiceDetailPage() {
               )}
             </div>
           </motion.div>
+
+          {/* Rest of the component remains unchanged */}
 
           <motion.div className="lg:col-span-1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
             <div className="sticky top-24">

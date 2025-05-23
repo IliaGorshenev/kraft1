@@ -143,51 +143,11 @@ const PartnershipCTA = () => {
   );
 };
 
-const PartnerCategories = () => {
-  const categories = [
-    { name: 'Технологические', icon: '🔧' },
-    { name: 'Интеграционные', icon: '🔄' },
-    { name: 'Дистрибьюторы', icon: '🚚' },
-    { name: 'Консалтинговые', icon: '📊' },
-  ];
-
-  return (
-    <motion.div className="mb-16" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-      <motion.h2 className="text-2xl font-bold mb-8 text-center" initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        Типы партнерства
-      </motion.h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {categories.map((category, index) => (
-          <motion.div
-            key={index}
-            className="bg-default-50 rounded-xl p-6 text-center hover:bg-primary/5 transition-colors"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -5 }}>
-            <div className="text-4xl mb-4">{category.icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
-            <p className="text-default-600 text-sm">
-              {category.name === 'Технологические' && 'Компании, чьи технологии и продукты мы интегрируем в наши решения'}
-              {category.name === 'Интеграционные' && 'Партнеры, помогающие внедрять наши решения у клиентов'}
-              {category.name === 'Дистрибьюторы' && 'Компании, распространяющие наши продукты на рынке'}
-              {category.name === 'Консалтинговые' && 'Эксперты, предоставляющие консультации по нашим решениям'}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
 export default function PartnersPage() {
   const [activePartner, setActivePartner] = useState(null);
 
   // Group partners by type for display purposes
   // This is just a visual grouping since your data doesn't have categories
-  const featuredPartners = partnersData.slice(0, 6); // First 6 partners for carousel
   const allPartners = partnersData; // All partners for grid
 
   return (

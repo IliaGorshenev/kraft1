@@ -11,7 +11,9 @@ export default function ServicesPage() {
     <DefaultLayout>
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center mb-16">
-          <h1 className={title({ color: 'blue', size: 'lg' })}>Наши услуги</h1>
+          <h1 className={title({ size: 'lg' })}>
+            Наши <span className="text-primary">услуги</span>
+          </h1>
           <p className="mt-4 text-lg text-default-600 max-w-2xl mx-auto">
             Мы предлагаем полный спектр ИТ-услуг для бизнеса любого масштаба, от консультаций до внедрения и поддержки комплексных решений.
           </p>

@@ -2,8 +2,6 @@ import ContactForm from '@/components/contact-form';
 import FeatureSection from '@/components/features';
 import { subtitle, title } from '@/components/primitives';
 import DefaultLayout from '@/layouts/default';
-import { Link } from '@heroui/link';
-import { button as buttonStyles } from '@heroui/theme';
 import { motion } from 'framer-motion';
 
 export default function AdvantagesPage() {

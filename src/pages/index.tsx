@@ -126,6 +126,16 @@ export default function IndexPage() {
                   <p className="text-default-600 text-sm">Оперативная техническая поддержка</p>
                 </div>
               </div>
+              <div className="mt-6 text-center">
+                <Link
+                  className={buttonStyles({
+                    color: 'primary',
+                    variant: 'flat',
+                  })}
+                  href="/advantages">
+                  Про наши преимущества
+                </Link>
+              </div>
             </div>
           }
           leftSlot={
@@ -134,14 +144,7 @@ export default function IndexPage() {
             </div>
           }
         />
-        <Link
-          className={buttonStyles({
-            color: 'primary',
-            variant: 'flat',
-          })}
-          href="/advantages">
-          Про наши преимущства
-        </Link>
+
         <ProductsShowcase />
 
         <PartnersSlider />

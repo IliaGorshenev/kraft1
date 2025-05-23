@@ -109,7 +109,7 @@ const ProductsShowcase: React.FC = () => {
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        {/* <motion.div 
           className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
@@ -123,7 +123,7 @@ const ProductsShowcase: React.FC = () => {
             Мы создаем передовые программные продукты, которые помогают компаниям оптимизировать процессы, 
             повышать эффективность и достигать новых высот в цифровой трансформации.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           initial="hidden"
