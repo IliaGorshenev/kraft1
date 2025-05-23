@@ -281,7 +281,7 @@ export default function AdvantagesPage() {
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-full z-0"></div>
             <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/approach-image.jpg"
+                src="/image-1.png"
                 alt="Наш подход"
                 className="w-full"
                 onError={(e) => {
