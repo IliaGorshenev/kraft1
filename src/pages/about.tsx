@@ -69,7 +69,7 @@ export default function AboutPage() {
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-full z-0"></div>
             <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/about-mission.jpg"
+                src="/image-1.png"
                 alt="Наша миссия"
                 className="w-full"
                 onError={(e) => {
@@ -261,22 +261,22 @@ export default function AboutPage() {
               {
                 name: 'Александр Петров',
                 position: 'Генеральный директор',
-                photo: 'https://via.placeholder.com/300x300?text=А.П.',
+                photo: '/image-2.png',
               },
               {
                 name: 'Екатерина Смирнова',
                 position: 'Технический директор',
-                photo: 'https://via.placeholder.com/300x300?text=Е.С.',
+                photo: '/image-1.png',
               },
               {
                 name: 'Михаил Иванов',
                 position: 'Руководитель разработки',
-                photo: 'https://via.placeholder.com/300x300?text=М.И.',
+                photo: '/image-2.png',
               },
               {
                 name: 'Анна Козлова',
                 position: 'Директор по маркетингу',
-                photo: 'https://via.placeholder.com/300x300?text=А.К.',
+                photo: '/image-1.png',
               },
             ].map((member, index) => (
               <motion.div key={index} className="text-center" variants={itemVariants}>

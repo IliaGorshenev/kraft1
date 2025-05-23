@@ -65,14 +65,17 @@ export default function IndexPage() {
         <PartnersSlider />
         <AnimatedServicesSection />
         {/* <RServiceTeaser /> */}
-        <Link
-          className={buttonStyles({
-            color: 'primary',
-            variant: 'flat',
-          })}
-          href="/services">
-          Все услуги
-        </Link>
+        <div className="flex justify-center w-full mt-8">
+          <Link
+            className={buttonStyles({
+              color: 'primary',
+              variant: 'flat',
+              className: 'dark:bg-primary-600 dark:text-white dark:hover:bg-primary-700 transition-colors'
+            })}
+            href="/services">
+            Все услуги
+          </Link>
+        </div>
         <ContactForm />
       </section>
     </DefaultLayout>
