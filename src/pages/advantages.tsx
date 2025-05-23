@@ -223,9 +223,9 @@ export default function AdvantagesPage() {
             viewport={{ once: true }}
             variants={containerVariants}>
             {advantages.map((advantage, index) => (
-              <motion.div key={index} className="bg-white p-8 rounded-xl shadow-sm" variants={itemVariants}>
+              <motion.div key={index} className="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-sm dark:shadow-dark-900/20" variants={itemVariants}>
                 <div className="bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-6 text-primary">{advantage.icon}</div>
-                <h3 className="text-xl font-semibold mb-4">{advantage.title}</h3>
+                <h3 className="text-xl font-semibold mb-4 dark:text-white">{advantage.title}</h3>
                 <p className="text-default-600">{advantage.description}</p>
               </motion.div>
             ))}
@@ -292,9 +292,8 @@ export default function AdvantagesPage() {
           </div>
         }
       />
-
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-default-50">
+      <section className="py-16 md:py-24 bg-default-50 dark:bg-dark-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -330,7 +329,7 @@ export default function AdvantagesPage() {
             ].map((testimonial, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-sm"
+                className="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-sm"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
