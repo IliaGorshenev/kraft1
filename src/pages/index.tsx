@@ -6,12 +6,14 @@ import FeatureSection from '@/components/features';
 import PartnersSlider from '@/components/partners-slider';
 import ProductsShowcase from '@/components/products-showcases';
 
+import AboutCompanyHero from '@/components/about-company-hero';
 import AnimatedServicesSection from '@/components/services';
 import DefaultLayout from '@/layouts/default';
 
 export default function IndexPage() {
   return (
     <DefaultLayout>
+      <AboutCompanyHero />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-16">
         {/* <motion.div
           className="inline-block max-w-2xl text-center justify-center"
@@ -33,7 +35,7 @@ export default function IndexPage() {
           </motion.div>
         </motion.div> */}
 
-        <FeatureSection
+        {/* <FeatureSection
           leftSlot={
             <div>
               <h2 className="text-3xl font-bold mb-4">О компании</h2>
@@ -60,7 +62,7 @@ export default function IndexPage() {
               <img src="/image-1.png" alt="О компании Крафт Лаб" className="w-full h-full object-cover" />
             </div>
           }
-        />
+        /> */}
         {/* <FeatureSection
           reverseOnMobile={true}
           leftSlot={

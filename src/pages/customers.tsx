@@ -45,7 +45,7 @@ export default function CustomersPage() {
       id: 1,
       industry: 'finance',
       logo: '/images/finance-logo.png',
-      imageSrc: '/images/finance-case.jpg',
+      imageSrc: '/customer-1.png',
       sector: 'Финансовый сектор',
       results: ['Сокращение времени реакции на 40%', 'Повышение удовлетворенности сотрудников на 35%', 'Снижение операционных затрат на 25%'],
     },
@@ -53,7 +53,7 @@ export default function CustomersPage() {
       id: 2,
       industry: 'retail',
       logo: '/images/retail-logo.png',
-      imageSrc: '/images/retail-case.jpg',
+      imageSrc: '/customer-2.png',
       sector: 'Розничная торговля',
       results: ['Единая система для всех подразделений', 'Автоматизация 85% рутинных запросов', 'Сокращение бюджета на поддержку на 30%'],
     },
@@ -61,7 +61,7 @@ export default function CustomersPage() {
       id: 3,
       industry: 'manufacturing',
       logo: '/images/manufacturing-logo.png',
-      imageSrc: '/images/manufacturing-case.jpg',
+      imageSrc: '/customer-3.png',
       sector: 'Производство',
       results: ['Снижение простоев оборудования на 28%', 'Увеличение срока службы оборудования на 15%', 'Оптимизация складских запасов запчастей'],
     },
@@ -69,7 +69,7 @@ export default function CustomersPage() {
       id: 4,
       industry: 'healthcare',
       logo: '/images/healthcare-logo.png',
-      imageSrc: '/images/healthcare-case.jpg',
+      imageSrc: '/customer-1.png',
       sector: 'Здравоохранение',
       results: ['Повышение доступности медицинского оборудования на 32%', 'Сокращение времени обработки заявок на 45%', 'Улучшение координации между отделениями'],
     },
@@ -77,7 +77,7 @@ export default function CustomersPage() {
       id: 5,
       industry: 'it',
       logo: '/images/it-logo.png',
-      imageSrc: '/images/it-case.jpg',
+      imageSrc: '/customer-2.png',
       sector: 'IT и телекоммуникации',
       results: ['Сокращение времени устранения неисправностей на 50%', 'Повышение уровня SLA до 99.9%', 'Автоматизация 70% типовых запросов'],
     },
@@ -85,7 +85,7 @@ export default function CustomersPage() {
       id: 6,
       industry: 'government',
       logo: '/images/government-logo.png',
-      imageSrc: '/images/government-case.jpg',
+      imageSrc: '/customer-3.png',
       sector: 'Государственный сектор',
       results: ['Сокращение бумажного документооборота на 80%', 'Ускорение обработки обращений граждан в 3 раза', 'Повышение прозрачности процессов'],
     },
@@ -93,7 +93,7 @@ export default function CustomersPage() {
       id: 7,
       industry: 'manufacturing',
       logo: '/images/energy-logo.png',
-      imageSrc: '/images/energy-case.jpg',
+      imageSrc: '/customer-1.png',
       sector: 'Энергетика',
       results: ['Сокращение времени реагирования на аварии на 35%', 'Оптимизация распределения ресурсов', 'Повышение безопасности производства'],
     },
@@ -101,7 +101,7 @@ export default function CustomersPage() {
       id: 8,
       industry: 'retail',
       logo: '/images/commercial-logo.png',
-      imageSrc: '/images/commercial-case.jpg',
+      imageSrc: '/customer-2.png',
       sector: 'Коммерческая недвижимость',
       results: ['Сокращение времени обработки заявок на 60%', 'Оптимизация работы службы эксплуатации', 'Повышение удовлетворенности клиентов на 40%'],
     },
@@ -161,7 +161,7 @@ export default function CustomersPage() {
       {/* Customer       {/* Customer Case Studies */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          {/* <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -170,7 +170,7 @@ export default function CustomersPage() {
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Внедрения</div>
             <h2 className="text-3xl font-bold mb-6">Успешные интеграции</h2>
             <p className="text-default-600 max-w-2xl mx-auto">Примеры внедрения наших решений в различных отраслях</p>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -199,9 +199,9 @@ export default function CustomersPage() {
 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="h-12 w-24 bg-white rounded flex items-center justify-center p-2">
+                    {/* <div className="h-12 w-24 bg-white rounded flex items-center justify-center p-2">
                       <img src={customer.logo || `https://via.placeholder.com/120x60?text=Logo`} alt="Company logo" className="max-h-10 max-w-full" />
-                    </div>
+                    </div> */}
                     <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">{industries.find((i) => i.id === customer.industry)?.name}</span>
                   </div>
 
@@ -321,35 +321,50 @@ export default function CustomersPage() {
                     title: 'Запуск и поддержка',
                     description: 'После запуска мы обеспечиваем постоянную техническую поддержку и помогаем оптимизировать использование системы.',
                   },
-                ].map((step, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative flex flex-col md:flex-row items-center"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}>
-                    <div
-                      className={`
-                      flex-shrink-0 h-12 w-12 rounded-full flex items-center justify-center z-10
-                      ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'} 
-                      ${index === 4 ? 'bg-primary text-white' : 'bg-default-100 text-primary'}
-                    `}>
-                      {index + 1}
-                    </div>
-
-                    {/* Content */}
-                    <div
-                      className={`
-                      mt-4 md:mt-0 md:w-5/12 
-                      ${index % 2 === 0 ? 'md:text-right md:mr-8' : 'md:text-left md:ml-8'}
-                    `}>
-                      <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                      <p className="text-default-600">{step.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                ].map((step, index, array) => (
+                    <motion.div
+                      key={index}
+                      className={`relative flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}>
+                      {/* Connecting line to next step (except for last item) */}
+                      {index < array.length - 1 && (
+                        <div 
+                          className={`
+                            hidden md:block absolute z-0 border-2 border-dashed border-default-200
+                            ${index % 2 === 0 
+                              ? 'h-[40px] w-[calc(50%-24px)] top-[14px] left-1/2' 
+                              : 'h-[40px] w-[calc(50%-24px)] top-[14px] right-1/2'
+                            }
+                          `}
+                        />
+                      )}
+                      
+                      <div
+                        className={`
+                        flex-shrink-0 h-12 w-12 rounded-full flex items-center justify-center z-10
+                        ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'} 
+                        ${index === array.length - 1 ? 'bg-primary text-white' : 'bg-default-100 text-primary'}
+                        border-4 border-white
+                      `}>
+                        {index + 1}
+                      </div>
+  
+                      {/* Content */}
+                      <div
+                        className={`
+                        mt-4 md:mt-0 md:w-5/12 
+                        ${index % 2 === 0 ? 'md:text-right md:mr-8' : 'md:text-left md:ml-8'}
+                        p-4 bg-white rounded-lg shadow-sm border border-default-100
+                      `}>
+                        <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                        <p className="text-default-600">{step.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
             </div>
           </div>
         </div>
