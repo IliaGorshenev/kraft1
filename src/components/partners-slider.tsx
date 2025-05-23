@@ -67,7 +67,7 @@ const SliderTrackForward = styled.div`
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-150px * ${partnersData.length / 2} - 40px * ${partnersData.length / 2}));
+      transform: translateX(calc(-200px * ${partnersData.length / 2} - 40px * ${partnersData.length / 2}));
     }
   }
 
@@ -80,7 +80,7 @@ const SliderTrackForward = styled.div`
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-100px * ${partnersData.length / 2} - 20px * ${partnersData.length / 2}));
+        transform: translateX(calc(-140px * ${partnersData.length / 2} - 20px * ${partnersData.length / 2}));
       }
     }
   }
@@ -94,7 +94,7 @@ const SliderTrackBackward = styled.div`
 
   @keyframes scrollBackward {
     0% {
-      transform: translateX(calc(-150px * ${partnersData.length / 2} - 40px * ${partnersData.length / 2}));
+      transform: translateX(calc(-200px * ${partnersData.length / 2} - 40px * ${partnersData.length / 2}));
     }
     100% {
       transform: translateX(0);
@@ -106,7 +106,7 @@ const SliderTrackBackward = styled.div`
 
     @keyframes scrollBackward {
       0% {
-        transform: translateX(calc(-100px * ${partnersData.length / 2} - 20px * ${partnersData.length / 2}));
+        transform: translateX(calc(-140px * ${partnersData.length / 2} - 20px * ${partnersData.length / 2}));
       }
       100% {
         transform: translateX(0);
@@ -115,12 +115,12 @@ const SliderTrackBackward = styled.div`
   }
 `;
 const PartnerItem = styled(motion.div)`
-  flex: 0 0 150px;
-  height: 100px;
+  flex: 0 0 200px; /* Increased from 150px */
+  height: 150px; /* Increased from 100px */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding: 20px; /* Increased from 15px */
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   transition: all 0.3s ease;
@@ -137,10 +137,10 @@ const PartnerItem = styled(motion.div)`
 
   img {
     max-width: 100%;
-    max-height: 70px;
+    max-height: 90px; /* Increased from 70px */
     object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.7;
+
+
     transition: all 0.3s ease;
   }
 
@@ -150,23 +150,23 @@ const PartnerItem = styled(motion.div)`
   }
 
   @media (max-width: 768px) {
-    flex: 0 0 100px;
-    height: 70px;
-    padding: 10px;
+    flex: 0 0 140px; /* Increased from 100px */
+    height: 100px; /* Increased from 70px */
+    padding: 15px; /* Increased from 10px */
     border-radius: 8px;
 
     img {
-      max-height: 50px;
+      max-height: 70px; /* Increased from 50px */
     }
   }
 
   @media (max-width: 480px) {
-    flex: 0 0 80px;
-    height: 60px;
-    padding: 8px;
+    flex: 0 0 120px; /* Increased from 80px */
+    height: 80px; /* Increased from 60px */
+    padding: 10px; /* Increased from 8px */
 
     img {
-      max-height: 40px;
+      max-height: 60px; /* Increased from 40px */
     }
   }
 `;
@@ -181,7 +181,12 @@ const PartnersSlider: React.FC = () => {
   const duplicatedSecondHalf = [...secondHalf, ...secondHalf, ...secondHalf];
 
   return (
-    <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="py-12  max-w-full overflow-hidden  md:py-8">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="py-12  max-w-full overflow-hidden  md:py-8">
       <div className="container mx-autopx-4">
         <motion.h2
           className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8"
