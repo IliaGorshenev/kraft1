@@ -70,7 +70,7 @@ export default function IndexPage() {
             className={buttonStyles({
               color: 'primary',
               variant: 'flat',
-              className: 'dark:bg-primary-600 dark:text-white dark:hover:bg-primary-700 transition-colors'
+              className: 'dark:bg-primary-600 dark:text-white dark:hover:bg-primary-700 transition-colors',
             })}
             href="/services">
             Все услуги

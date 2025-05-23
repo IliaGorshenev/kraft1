@@ -3,7 +3,7 @@ import { Navbar as HeroUINavbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { link as linkStyles } from '@heroui/theme';
 import clsx from 'clsx';
 
-import { GithubIcon, Logo } from '@/components/icons';
+import { Logo } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 
