@@ -1,21 +1,3 @@
-// import {heroui} from "@heroui/theme"
-
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: [
-//     "./index.html",
-//     './src/layouts/**/*.{js,ts,jsx,tsx,mdx}',
-//     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-//     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-//     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
-//   ],
-//   theme: {
-//     extend: {},
-//   },
-//   darkMode: "class",
-//   plugins: [heroui()],
-// }
-
 import { heroui } from '@heroui/theme';
 
 /** @type {import('tailwindcss').Config} */
@@ -31,17 +13,30 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FF8461',
-          50: '#FFF8F5',
-          100: '#FFEDE7',
-          200: '#FFD6C9',
-          300: '#FFBFAB',
-          400: '#FFA78D',
-          500: '#FF8461', // Main primary color
-          600: '#FF6A3E',
-          700: '#FF501B',
-          800: '#F73C00',
-          900: '#D43300',
+          DEFAULT: '#54529D', // Main primary color (purple)
+          50: '#F5F5FB',
+          100: '#E6E6F5',
+          200: '#CDCCE9',
+          300: '#B3B2DE',
+          400: '#8482C0',
+          500: '#54529D', // Main primary color
+          600: '#4A4889',
+          700: '#3F3D75',
+          800: '#343361',
+          900: '#2C2C84', // Deep blue variant
+        },
+        accent: {
+          DEFAULT: '#EA5715', // Orange accent color
+          50: '#FEF3EE',
+          100: '#FDE7DD',
+          200: '#FBCFBB',
+          300: '#F8B799',
+          400: '#F48F55',
+          500: '#EA5715', // Main accent color
+          600: '#D24B11',
+          700: '#B9400E',
+          800: '#9F370B',
+          900: '#862E09',
         },
         dark: {
           DEFAULT: '#171717',
@@ -69,7 +64,15 @@ export default {
         light: {
           colors: {
             primary: {
-              DEFAULT: '#FF8461',
+              DEFAULT: '#54529D', // Purple
+              foreground: '#FFFFFF',
+            },
+            secondary: {
+              DEFAULT: '#2C2C84', // Deep blue
+              foreground: '#FFFFFF',
+            },
+            accent: {
+              DEFAULT: '#EA5715', // Orange
               foreground: '#FFFFFF',
             },
             default: {
@@ -79,13 +82,21 @@ export default {
             background: {
               DEFAULT: '#FFFFFF',
             },
-            focus: '#FF8461',
+            focus: '#54529D',
           },
         },
         dark: {
           colors: {
             primary: {
-              DEFAULT: '#FF8461',
+              DEFAULT: '#54529D', // Purple
+              foreground: '#FFFFFF',
+            },
+            secondary: {
+              DEFAULT: '#2C2C84', // Deep blue
+              foreground: '#FFFFFF',
+            },
+            accent: {
+              DEFAULT: '#EA5715', // Orange
               foreground: '#FFFFFF',
             },
             default: {
@@ -95,7 +106,7 @@ export default {
             background: {
               DEFAULT: '#171717',
             },
-            focus: '#FF8461',
+            focus: '#54529D',
           },
         },
       },

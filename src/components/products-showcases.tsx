@@ -62,7 +62,7 @@ const ProductsShowcase: React.FC = () => {
       tagline: 'Платформа управления сервисами',
       description:
         'RVS упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете контроль, автоматизацию и рост эффективности с первых недель.',
-      imageSrc: '/my/rvs.jpeg',
+      imageSrc: '/interface.jpg',
       fallbackImageSrc: 'https://via.placeholder.com/800x500?text=RVS+Dashboard',
       primaryLink: {
         text: 'Узнать подробнее',

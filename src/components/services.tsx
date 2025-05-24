@@ -1,189 +1,18 @@
-import { Service, servicesContent } from '@/types';
-import { AnimatePresence, motion, useInView } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+import { servicesContent } from '@/types';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-
-// Enhanced ServiceTextItem component with better scroll detection
-const ServiceTextItem: React.FC<{
-  service: Service;
-  onInView: () => void;
-  isActive: boolean;
-}> = ({ service, onInView, isActive }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    margin: '0px', // Tighter activation area - only when fully in view
-    amount: 0.6, // Require at least 60% of the element to be visible
-    once: false,
-  });
-  useEffect(() => {
-    if (isInView) {
-      console.log('Service in view:', service.id);
-      onInView();
-    }
-  }, [isInView, onInView, service.id]);
-  return (
-    <motion.div
-      ref={ref}
-      id={`service-${service.id}`}
-      className="min-h-[70vh] md:min-h-[60vh] lg:min-h-[80vh] py-16 md:py-20 flex flex-col justify-center"
-      initial={{ opacity: 0.4 }}
-      animate={{
-        opacity: isActive ? 1 : 0.4,
-        y: isActive ? 0 : 10,
-      }}
-      transition={{
-        duration: 0.5,
-        ease: 'easeInOut',
-      }}>
-      <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">{service.title}</h3>
-      <p className="text-default-600 text-lg leading-relaxed max-w-xl">{service.description}</p>
-
-      {isActive && (
-        <motion.div className="mt-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
-          <div className="inline-flex items-center text-primary font-medium">
-          <Link to={`/services/${service.id}`}>Узнать подробнее</Link>
-            <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </div>
-        </motion.div>
-      )}
-    </motion.div>
-  );
-};
-
-
-// Mobile service card component for grid layout
-const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={service.imageSrc}
-          alt={service.title}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.currentTarget.src = 'https://via.placeholder.com/600x400?text=Service+Image';
-          }}
-        />
-        <div className="absolute top-4 right-4 bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">{service.displayNumber}</div>
-      </div>
-      <div className="p-6 flex-grow flex flex-col">
-        <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
-        <p className="text-default-600 flex-grow">{service.description}</p>
-        <div className="mt-4 inline-flex items-center text-primary font-medium">
-        <Link to={`/services/${service.id}`}>Узнать подробнее</Link>
-          <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+// Import required modules
+import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 
 const AnimatedServicesSection: React.FC = () => {
-  const [activeServiceId, setActiveServiceId] = useState<string>(servicesContent[0].id);
-  const activeService = servicesContent.find((s) => s.id === activeServiceId) || servicesContent[0];
-  const [direction, setDirection] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  // Check if screen is desktop (>= 1200px)
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsDesktop(window.innerWidth >= 1200);
-    };
-
-    // Initial check
-    checkScreenSize();
-
-    // Add event listener for window resize
-    window.addEventListener('resize', checkScreenSize);
-
-    // Cleanup
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
-
-  console.log('Current activeServiceId:', activeServiceId);
-  console.log('Current activeService title:', activeService.title);
-
-  // Enhanced animation variants with more dramatic effects
-  const imageVariants = {
-    initial: (direction: number) => ({
-      opacity: 0,
-      x: direction > 0 ? 100 : -100,
-      rotateY: direction > 0 ? 15 : -15,
-    }),
-    animate: {
-      opacity: 1,
-      x: 0,
-      rotateY: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-    exit: (direction: number) => ({
-      opacity: 0,
-      x: direction > 0 ? -100 : 100,
-      rotateY: direction > 0 ? -15 : 15,
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    }),
-  };
-
-  const numberVariants = {
-    initial: {
-      opacity: 0,
-      scale: 0.7,
-      y: 30,
-    },
-    animate: {
-      opacity: 0.6,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: 0.2,
-        ease: 'easeOut',
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.7,
-      y: -30,
-      transition: {
-        duration: 0.4,
-        ease: 'easeIn',
-      },
-    },
-  };
-
-  const handleSetActiveService = (serviceId: string) => {
-    if (serviceId === activeServiceId) return;
-
-    const currentIndex = servicesContent.findIndex((s) => s.id === activeServiceId);
-    const newIndex = servicesContent.findIndex((s) => s.id === serviceId);
-    setDirection(newIndex > currentIndex ? 1 : -1);
-    setActiveServiceId(serviceId);
-
-    // Smooth scroll to the selected service
-    const element = document.getElementById(`service-${serviceId}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
-  // Progress indicator for visual feedback
-  const progress = (servicesContent.findIndex((s) => s.id === activeServiceId) / (servicesContent.length - 1)) * 100;
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24 bg-background">
@@ -192,90 +21,70 @@ const AnimatedServicesSection: React.FC = () => {
           Наши <span className="text-primary">услуги</span>
         </h2>
 
-        {/* Desktop version - Animated scrolling layout */}
-        {isDesktop ? (
-          <>
-            {/* Progress bar with navigation controls */}
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-full h-1 bg-gray-200 rounded-full relative">
-                <motion.div
-                  className="absolute top-0 left-0 h-full bg-primary rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 relative">
-              {/* Sticky Visual Pane */}
-              <div className="lg:w-1/2 lg:sticky lg:top-[25vh] h-[60vh] flex items-center justify-center p-4 order-1 lg:order-1">
-                <div className="relative w-full h-full max-w-lg flex items-center justify-center">
-                  {/* Background gradient for visual appeal */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl" />
-
-                  {/* Animated Number */}
-                  <AnimatePresence initial={false} mode="wait">
-                    <motion.div
-                      key={activeService.id + '-number'}
-                      variants={numberVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                      className="absolute -bottom-28 -right-22 md:-bottom-22 md:-right-16 text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[15rem] font-bold text-primary select-none z-50"
-                      style={{ lineHeight: '1', opacity: '0.5' }}>
-                      {activeService.displayNumber}
-                    </motion.div>
-                  </AnimatePresence>
-
-                  {/* Animated Image with enhanced effects */}
-                  <AnimatePresence initial={false} mode="wait">
-                    <motion.div
-                      key={activeService.id + '-image'}
-                      custom={direction}
-                      variants={imageVariants}
-                      initial="initial"
-                      animate="animate"
-                      exit="exit"
-                      className="relative z-2 w-full max-w-sm sm:max-w-md aspect-[4/5] rounded-xl overflow-hidden"
-                      style={{
-                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                        transformStyle: 'preserve-3d',
-                        perspective: '1000px',
-                      }}>
-                      <img
-                        src={activeService.imageSrc}
-                        alt={activeService.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          // Fallback for missing images
-                          e.currentTarget.src = 'https://via.placeholder.com/600x800?text=Service+Image';
-                        }}
-                      />
-
-                      {/* Overlay gradient for better text contrast */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-
-              {/* Scrollable Text Pane */}
-              <div className="lg:w-1/2 space-y-8 order-2 lg:order-2">
-                {servicesContent.map((service) => (
-                  <ServiceTextItem key={service.id} service={service} onInView={() => handleSetActiveService(service.id)} isActive={service.id === activeServiceId} />
-                ))}
-              </div>
-            </div>
-          </>
-        ) : (
-          /* Mobile version - Simple grid layout */
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="mb-16">
+          <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+              slideShadows: false,
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: true,
+              pauseOnMouseEnter: true,
+            }}
+            pagination={{ clickable: true }}
+            navigation={true}
+            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+            className="mySwiper"
+            style={{ padding: '50px 0' }}>
             {servicesContent.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+              <SwiperSlide key={service.id} style={{ width: '350px', height: '500px' }}>
+                <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={service.imageSrc}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://via.placeholder.com/600x800?text=Service+Image';
+                    }}
+                  />
+                  <div className="absolute top-4 right-4 bg-primary/90 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">
+                    {service.displayNumber}
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                    <p className="text-sm mb-4 opacity-90 line-clamp-3">{service.description}</p>
+                    <Link to={`/services/${service.id}`} className="inline-flex items-center text-white hover:text-primary-200 font-medium">
+                      Узнать подробнее
+                      <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </SwiperSlide>
             ))}
+          </Swiper>
+
+          {/* View all services button */}
+          <div className="text-center mt-12">
+            <Link
+              to="/services"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors duration-300">
+              Все услуги
+              <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

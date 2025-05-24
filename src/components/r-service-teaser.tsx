@@ -70,7 +70,7 @@ const RServiceTeaser: React.FC = () => {
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full z-0"></div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-full z-0"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
+              {/* <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
                 <img
                   src="/rvs.jpeg"
                   alt="RVS интерфейс"
@@ -79,6 +79,27 @@ const RServiceTeaser: React.FC = () => {
                     e.currentTarget.src = 'https://via.placeholder.com/800x500?text=RVS+Dashboard';
                   }}
                 />
+              </div> */}
+              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-100 p-12 flex items-center justify-center h-64">
+                <motion.div
+                  className="text-8xl font-extrabold tracking-wider"
+                  style={{ color: '#55529E' }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{
+                    x: [0, 20, 0, -20, 0],
+                    opacity: 1,
+                    scale: 1,
+                    textShadow: ['0px 0px 0px rgba(85,82,158,0.3)', '0px 0px 10px rgba(85,82,158,0.5)', '0px 0px 0px rgba(85,82,158,0.3)'],
+                  }}
+                  transition={{
+                    duration: 6,
+                    ease: 'easeInOut',
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    times: [0, 0.25, 0.5, 0.75, 1],
+                  }}>
+                  RVS
+                </motion.div>
               </div>
             </div>
           </motion.div>
