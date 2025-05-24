@@ -15,7 +15,7 @@ const FullWidthSection = styled.section`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
 `;
 
@@ -109,8 +109,8 @@ export default function AboutCompanyHero() {
   return (
     <FullWidthSection>
       {/* Particles Background */}
-      <div style={{ minHeight: '100vh' }} className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-black to-gray-900">
-        {init && <Particles id="tsparticles" options={particlesOptions} className="absolute inset-0 w-full h-full" />}
+      <div style={{ minHeight: '100vh', height: 'auto' }} className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-black to-gray-900">
+        {init && <Particles id="tsparticles" options={particlesOptions} className="absolute inset-0 w-full min-h-full" />}
         <div className="absolute inset-0 bg-black/40 z-[2]"></div>
       </div>
 
@@ -138,12 +138,17 @@ export default function AboutCompanyHero() {
             Наша команда состоит из опытных разработчиков, аналитиков и проектных менеджеров, которые обеспечивают высокое качество и своевременную реализацию проектов.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}>
             <Link
               className={buttonStyles({
                 color: 'primary',
                 variant: 'shadow',
                 size: 'lg',
+                class: 'w-full sm:w-auto',
               })}
               href="/about">
               Подробнее о нас
@@ -153,7 +158,7 @@ export default function AboutCompanyHero() {
                 color: 'default',
                 variant: 'bordered',
                 size: 'lg',
-                class: 'ml-4 bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20',
+                class: 'w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20',
               })}
               href="/services">
               Наши услуги

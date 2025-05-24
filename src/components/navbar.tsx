@@ -31,7 +31,7 @@ export const Navbar = () => {
         scrolled ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-md mx-auto mt-2 rounded-5xl' : 'bg-transparent'
       }`}
       style={{
-        width: scrolled ? '70%' : '100%',
+        width: scrolled ? '90%' : '100%',
         maxWidth: scrolled ? '1400px' : 'none',
         borderRadius: scrolled ? '15px' : '0',
         overflow: 'hidden',

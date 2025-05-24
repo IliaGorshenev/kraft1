@@ -20,52 +20,56 @@ export default function IndexPage() {
 
         <FeatureSection
           rightSlot={
-            <CornerBorderedBox className="p-6">
-              <h2 className="text-3xl font-bold mb-4">Наши преимущества</h2>
-              <p className="text-default-600 mb-6">Мы стремимся предоставлять нашим клиентам лучшие решения, которые отвечают их бизнес-потребностям.</p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 border border-default-200 rounded-lg">
-                  <div className="flex items-center gap-3 mb-2">
+            <CornerBorderedBox className="p-4 sm:p-6">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Наши преимущества</h2>
+              <p className="text-default-600 mb-4 sm:mb-6 text-sm sm:text-base">
+                Мы стремимся предоставлять нашим клиентам лучшие решения, которые отвечают их бизнес-потребностям.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="p-3 sm:p-4 border border-default-200 rounded-lg">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                     <div className="text-primary">
-                      <Clock size={20} />
+                      <Clock size={18} className="sm:w-5 sm:h-5" />
                     </div>
-                    <h3 className="font-semibold">Опыт</h3>
+                    <h3 className="font-semibold text-sm sm:text-base">Опыт</h3>
                   </div>
-                  <p className="text-default-600 text-sm">Более 7 лет на рынке IT-услуг</p>
+                  <p className="text-default-600 text-xs sm:text-sm">Более 7 лет на рынке IT-услуг</p>
                 </div>
-                <div className="p-4 border border-default-200 rounded-lg">
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="p-3 sm:p-4 border border-default-200 rounded-lg">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                     <div className="text-primary">
-                      <Award size={20} />
+                      <Award size={18} className="sm:w-5 sm:h-5" />
                     </div>
-                    <h3 className="font-semibold">Качество</h3>
+                    <h3 className="font-semibold text-sm sm:text-base">Качество</h3>
                   </div>
-                  <p className="text-default-600 text-sm">Современные технологии и методологии разработки</p>
+                  <p className="text-default-600 text-xs sm:text-sm">Современные технологии и методологии разработки</p>
                 </div>
-                <div className="p-4 border border-default-200 rounded-lg">
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="p-3 sm:p-4 border border-default-200 rounded-lg">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                     <div className="text-primary">
-                      <Shield size={20} />
+                      <Shield size={18} className="sm:w-5 sm:h-5" />
                     </div>
-                    <h3 className="font-semibold">Надежность</h3>
+                    <h3 className="font-semibold text-sm sm:text-base">Надежность</h3>
                   </div>
-                  <p className="text-default-600 text-sm">Соблюдение сроков и бюджета проектов</p>
+                  <p className="text-default-600 text-xs sm:text-sm">Соблюдение сроков и бюджета проектов</p>
                 </div>
-                <div className="p-4 border border-default-200 rounded-lg">
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="p-3 sm:p-4 border border-default-200 rounded-lg">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                     <div className="text-primary">
-                      <HeadphonesIcon size={20} />
+                      <HeadphonesIcon size={18} className="sm:w-5 sm:h-5" />
                     </div>
-                    <h3 className="font-semibold">Поддержка</h3>
+                    <h3 className="font-semibold text-sm sm:text-base">Поддержка</h3>
                   </div>
-                  <p className="text-default-600 text-sm">Оперативная техническая поддержка</p>
+                  <p className="text-default-600 text-xs sm:text-sm">Оперативная техническая поддержка</p>
                 </div>
               </div>
-              <div className="mt-6 text-center">
+              <div className="mt-4 sm:mt-6 text-center">
                 <Link
                   className={buttonStyles({
                     color: 'primary',
                     variant: 'flat',
+                    size: 'sm',
+                    class: 'sm:text-base sm:py-2',
                   })}
                   href="/advantages">
                   Про наши преимущества
