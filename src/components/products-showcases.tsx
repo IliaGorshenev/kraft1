@@ -1,7 +1,7 @@
 import { Link } from '@heroui/link';
-import React from 'react';
 import { button as buttonStyles } from '@heroui/theme';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 interface Product {
   id: string;
@@ -57,19 +57,20 @@ const ProductsShowcase: React.FC = () => {
   // Product data
   const products: Product[] = [
     {
-      id: 'r-service',
-      name: 'R-Service',
+      id: 'rvs',
+      name: 'RVS',
       tagline: 'Платформа управления сервисами',
-      description: 'R-Service упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете контроль, автоматизацию и рост эффективности с первых недель.',
-      imageSrc: '/к7.png',
-      fallbackImageSrc: 'https://via.placeholder.com/800x500?text=R-Service+Dashboard',
+      description:
+        'RVS упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете контроль, автоматизацию и рост эффективности с первых недель.',
+      imageSrc: '/my/rvs.jpeg',
+      fallbackImageSrc: 'https://via.placeholder.com/800x500?text=RVS+Dashboard',
       primaryLink: {
         text: 'Узнать подробнее',
-        href: '/r-service',
+        href: '/rvs',
       },
       secondaryLink: {
         text: 'Запросить демо',
-        href: '/r-service/demo',
+        href: '/rvs/demo',
       },
     },
     // {
@@ -125,12 +126,7 @@ const ProductsShowcase: React.FC = () => {
           </p>
         </motion.div> */}
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={sectionVariants}
-          className="space-y-32">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="space-y-32">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -141,9 +137,7 @@ const ProductsShowcase: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
                   {product.name} — <span className="text-primary">новый уровень</span>
                 </h2>
-                <p className="text-default-600 text-lg mb-8">
-                  {product.description}
-                </p>
+                <p className="text-default-600 text-lg mb-8">{product.description}</p>
                 <div className="flex flex-wrap gap-4">
                   <Link
                     className={buttonStyles({

@@ -50,10 +50,10 @@ const RServiceSection: React.FC = () => {
           {/* <motion.div className="lg:w-1/2" variants={itemVariants}>
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Платформа управления сервисами</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              R-Service — единая система <span className="text-primary">вместо хаоса</span>
+              RVS — единая система <span className="text-primary">вместо хаоса</span>
             </h2>
             <p className="text-default-600 text-lg mb-8">
-              R-Service упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете
+              RVS упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете
               контроль, автоматизацию и рост эффективности с первых недель.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -63,7 +63,7 @@ const RServiceSection: React.FC = () => {
                   variant: 'shadow',
                   size: 'lg',
                 })}
-                href="/r-service">
+                href="/rvs">
                 Узнать подробнее
               </Link>
               <Link
@@ -72,7 +72,7 @@ const RServiceSection: React.FC = () => {
                   variant: 'bordered',
                   size: 'lg',
                 })}
-                href="/r-service/demo">
+                href="/rvs/demo">
                 Запросить демо
               </Link>
             </div>
@@ -84,11 +84,11 @@ const RServiceSection: React.FC = () => {
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-full z-0"></div>
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
                 <img
-                  src="/r-service-dashboard.png"
-                  alt="R-Service интерфейс"
+                  src="/rvs-dashboard.png"
+                  alt="RVS интерфейс"
                   className="w-full"
                   onError={(e) => {
-                    e.currentTarget.src = 'https://via.placeholder.com/800x500?text=R-Service+Dashboard';
+                    e.currentTarget.src = 'https://via.placeholder.com/800x500?text=RVS+Dashboard';
                   }}
                 />
               </div>
@@ -99,7 +99,7 @@ const RServiceSection: React.FC = () => {
         {/* Key Benefits */}
         <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.h3 className="text-3xl font-bold text-center mb-12" variants={itemVariants}>
-            R-Service наводит порядок в бизнес-процессах
+            RVS наводит порядок в бизнес-процессах
           </motion.h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -129,13 +129,13 @@ const RServiceSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Why Choose R-Service */}
+        {/* Why Choose RVS */}
         <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.div className="text-center mb-12" variants={itemVariants}>
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">вместо классических ITSM-систем</div>
-            <h3 className="text-3xl font-bold">8 причин выбрать R-Service</h3>
+            <h3 className="text-3xl font-bold">8 причин выбрать RVS</h3>
             <p className="text-default-600 mt-4 max-w-2xl mx-auto">
-              В отличие от классических ITSM-систем, R-Service закрывает потребности бизнеса из коробки — без дорогих доработок, долгих внедрений и ограничений.
+              В отличие от классических ITSM-систем, RVS закрывает потребности бизнеса из коробки — без дорогих доработок, долгих внедрений и ограничений.
             </p>
           </motion.div>
 
@@ -159,7 +159,7 @@ const RServiceSection: React.FC = () => {
               },
               {
                 title: 'Запуск от 4 недель',
-                description: 'R-Service внедряется быстро — другие решения требуют от 6 до 18 месяцев.',
+                description: 'RVS внедряется быстро — другие решения требуют от 6 до 18 месяцев.',
               },
               {
                 title: 'Автоматизация без кода',
@@ -189,12 +189,11 @@ const RServiceSection: React.FC = () => {
         {/* Industries */}
         <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.h3 className="text-3xl font-bold text-center mb-12" variants={itemVariants}>
-            R-Service — решение для реальных задач в вашей отрасли
+            RVS — решение для реальных задач в вашей отрасли
           </motion.h3>
 
           <motion.p className="text-default-600 text-center max-w-3xl mx-auto mb-12" variants={itemVariants}>
-            Благодаря гибкой архитектуре, R-Service одинаково эффективно работает в десятках отраслей — от промышленности и нефтегаза до госструктур и финансового
-            сектора.
+            Благодаря гибкой архитектуре, RVS одинаково эффективно работает в десятках отраслей — от промышленности и нефтегаза до госструктур и финансового сектора.
           </motion.p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
@@ -219,7 +218,7 @@ const RServiceSection: React.FC = () => {
         {/* Problems Solved */}
         <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.h3 className="text-3xl font-bold text-center mb-12" variants={itemVariants}>
-            Бизнес-проблемы, которые решает R-Service
+            Бизнес-проблемы, которые решает RVS
           </motion.h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -325,7 +324,7 @@ const RServiceSection: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}>
-          <h3 className="text-3xl font-bold mb-4">Оцените возможности R-Service</h3>
+          <h3 className="text-3xl font-bold mb-4">Оцените возможности RVS</h3>
           <p className="text-default-600 max-w-2xl mx-auto mb-8">
             Запросите демонстрацию и узнайте, как наша платформа может оптимизировать управление корпоративными сервисами, улучшить взаимодействие с поставщиками и
             повысить эффективность ваших бизнес-процессов.
@@ -337,7 +336,7 @@ const RServiceSection: React.FC = () => {
               variant: 'shadow',
               size: 'lg',
             })}
-            href="/r-service/demo">
+            href="/rvs/demo">
             Запросить демо
           </Link>
         </motion.div>

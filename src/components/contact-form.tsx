@@ -64,6 +64,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <motion.section
+      id='feedback'
       className="bg-primary/5 rounded-2xl p-8 my-12"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}

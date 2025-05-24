@@ -1,7 +1,7 @@
 import { Link } from '@heroui/link';
-import React from 'react';
 import { button as buttonStyles } from '@heroui/theme';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 const RServiceTeaser: React.FC = () => {
   // Animation variants
@@ -38,11 +38,11 @@ const RServiceTeaser: React.FC = () => {
           <motion.div className="lg:w-1/2" variants={itemVariants}>
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Платформа управления сервисами</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              R-Service — единая система <span className="text-primary">вместо хаоса</span>
+              RVS — единая система <span className="text-primary">вместо хаоса</span>
             </h2>
             <p className="text-default-600 text-lg mb-8">
-              R-Service упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете
-              контроль, автоматизацию и рост эффективности с первых недель.
+              RVS упорядочивает внутренние процессы и объединяет всё — от ИТ до HR — в единую, прозрачную систему. Вместо хаоса и ручной рутины вы получаете контроль,
+              автоматизацию и рост эффективности с первых недель.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -51,7 +51,7 @@ const RServiceTeaser: React.FC = () => {
                   variant: 'shadow',
                   size: 'lg',
                 })}
-                href="/r-service">
+                href="/rvs">
                 Узнать подробнее
               </Link>
               <Link
@@ -60,7 +60,7 @@ const RServiceTeaser: React.FC = () => {
                   variant: 'bordered',
                   size: 'lg',
                 })}
-                href="/r-service/demo">
+                href="/rvs/demo">
                 Запросить демо
               </Link>
             </div>
@@ -72,11 +72,11 @@ const RServiceTeaser: React.FC = () => {
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/5 rounded-full z-0"></div>
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl">
                 <img
-                  src="/r-service-dashboard.png"
-                  alt="R-Service интерфейс"
+                  src="/rvs.jpeg"
+                  alt="RVS интерфейс"
                   className="w-full"
                   onError={(e) => {
-                    e.currentTarget.src = 'https://via.placeholder.com/800x500?text=R-Service+Dashboard';
+                    e.currentTarget.src = 'https://via.placeholder.com/800x500?text=RVS+Dashboard';
                   }}
                 />
               </div>

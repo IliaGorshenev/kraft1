@@ -236,7 +236,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 md:py-24">
+      {/* <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -290,7 +290,7 @@ export default function AboutPage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* History Section */}
       {/* <section className="py-16 md:py-24">
@@ -331,8 +331,8 @@ export default function AboutPage() {
                 },
                 {
                   year: '2023',
-                  title: 'Запуск R-Service',
-                  description: 'Мы представили нашу флагманскую платформу R-Service, которая стала революционным решением в своей области.',
+                  title: 'Запуск RVS',
+                  description: 'Мы представили нашу флагманскую платформу RVS, которая стала революционным решением в своей области.',
                 },
               ].map((milestone, index) => (
                 <motion.div key={index} className="flex flex-col md:flex-row gap-6" variants={itemVariants}>

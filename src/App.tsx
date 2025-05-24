@@ -5,7 +5,7 @@ import BlogPage from '@/pages/blog';
 import DocsPage from '@/pages/docs';
 import IndexPage from '@/pages/index';
 import PricingPage from '@/pages/pricing';
-import RServicePage from '@/pages/r-service';
+
 import ScrollToTop from './components/scroll-to-top';
 import AdvantagesPage from './pages/advantages';
 import ContactPage from './pages/contacts';
@@ -14,6 +14,7 @@ import DemoRequestPage from './pages/demo';
 import PartnersPage from './pages/partners';
 import ServiceDetailPage from './pages/service-ind';
 import ServicesPage from './pages/services';
+import RServicePage from './pages/r-service';
 
 function App() {
   return (
@@ -27,9 +28,9 @@ function App() {
         <Route element={<BlogPage />} path="/blog" />
         <Route element={<AboutPage />} path="/about" />
         <Route element={<PartnersPage />} path="/partners" />
-        <Route element={<RServicePage />} path="/r-service" />
+        <Route element={<RServicePage />} path="/rvs" />
         <Route element={<ContactPage />} path="/contact" />
-        <Route element={<DemoRequestPage />} path="/r-service/demo" />
+        <Route element={<DemoRequestPage />} path="/rvs/demo" />
         <Route element={<CustomersPage />} path="/customers" />
         <Route element={<ServicesPage />} path="/services" />
         <Route element={<ServiceDetailPage />} path="/services/:serviceId" />

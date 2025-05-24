@@ -1,6 +1,7 @@
 import ContactForm from '@/components/contact-form';
 import { subtitle, title } from '@/components/primitives';
 import RServiceSection from '@/components/r-service-section';
+
 import DefaultLayout from '@/layouts/default';
 import { Link } from '@heroui/link';
 import { button as buttonStyles } from '@heroui/theme';
@@ -17,7 +18,7 @@ export default function RServicePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}>
           <div className={title()}>
-            <span>R-Service — </span>
+            <span>RVS — </span>
             <span className="text-primary">платформа управления сервисами</span>
           </div>
           <motion.div className={subtitle({ class: 'mt-6 mx-auto' })} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}>
@@ -43,7 +44,7 @@ export default function RServicePage() {
                 variant: 'bordered',
                 size: 'lg',
               })}
-              href="/r-service/demo">
+              href="/rvs/demo">
               Запросить демо
             </Link>
           </motion.div>
@@ -81,7 +82,7 @@ export default function RServicePage() {
               transition={{ duration: 0.7 }}>
               <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Платформа</div>
               <h2 className="text-3xl font-bold">Техническая информация</h2>
-              <p className="text-default-600 mt-4 max-w-2xl mx-auto">R-Service — это современная платформа, разработанная с использованием передовых технологий</p>
+              <p className="text-default-600 mt-4 max-w-2xl mx-auto">RVS — это современная платформа, разработанная с использованием передовых технологий</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -102,7 +103,7 @@ export default function RServicePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}>
                 <h3 className="text-xl font-semibold mb-4">Интеграции</h3>
-                <p className="text-default-600">Открытый API позволяет легко интегрировать R-Service с существующими системами и сервисами компании.</p>
+                <p className="text-default-600">Открытый API позволяет легко интегрировать RVS с существующими системами и сервисами компании.</p>
               </motion.div>
 
               <motion.div
@@ -128,7 +129,7 @@ export default function RServicePage() {
               transition={{ duration: 0.7 }}>
               <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Материалы</div>
               <h2 className="text-3xl font-bold">Полезные материалы</h2>
-              <p className="text-default-600 mt-4 max-w-2xl mx-auto">Ознакомьтесь с документацией и обучающими материалами по платформе R-Service</p>
+              <p className="text-default-600 mt-4 max-w-2xl mx-auto">Ознакомьтесь с документацией и обучающими материалами по платформе RVS</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -157,14 +158,14 @@ export default function RServicePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Техническая документация</h3>
-                <p className="text-default-600 mb-4">Подробная документация по установке, настройке и использованию платформы R-Service.</p>
+                <p className="text-default-600 mb-4">Подробная документация по установке, настройке и использованию платформы RVS.</p>
                 <Link
                   className={buttonStyles({
                     color: 'primary',
                     variant: 'light',
                     size: 'sm',
                   })}
-                  href="/r-service/docs">
+                  href="/rvs/docs">
                   Перейти к документации
                 </Link>
               </motion.div>
@@ -197,7 +198,7 @@ export default function RServicePage() {
                     variant: 'light',
                     size: 'sm',
                   })}
-                  href="/r-service/videos">
+                  href="/rvs/videos">
                   Смотреть видео
                 </Link>
               </motion.div>
@@ -225,14 +226,14 @@ export default function RServicePage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Примеры внедрения</h3>
-                <p className="text-default-600 mb-4">Кейсы успешного внедрения R-Service в компаниях различных отраслей.</p>
+                <p className="text-default-600 mb-4">Кейсы успешного внедрения RVS в компаниях различных отраслей.</p>
                 <Link
                   className={buttonStyles({
                     color: 'primary',
                     variant: 'light',
                     size: 'sm',
                   })}
-                  href="/r-service/cases">
+                  href="/rvs/cases">
                   Изучить кейсы
                 </Link>
               </motion.div>
@@ -250,7 +251,7 @@ export default function RServicePage() {
               transition={{ duration: 0.7 }}>
               <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Ресурсы</div>
               <h2 className="text-3xl font-bold">Дополнительные ресурсы</h2>
-              <p className="text-default-600 mt-4 max-w-2xl mx-auto">Получите дополнительную информацию о платформе R-Service</p>
+              <p className="text-default-600 mt-4 max-w-2xl mx-auto">Получите дополнительную информацию о платформе RVS</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -264,16 +265,16 @@ export default function RServicePage() {
                 <div className="space-y-4">
                   {[
                     {
-                      question: 'Как быстро можно внедрить R-Service?',
-                      answer: 'Базовое внедрение R-Service занимает от 4 недель. Точные сроки зависят от масштаба организации и требуемой кастомизации.',
+                      question: 'Как быстро можно внедрить RVS?',
+                      answer: 'Базовое внедрение RVS занимает от 4 недель. Точные сроки зависят от масштаба организации и требуемой кастомизации.',
                     },
                     {
-                      question: 'Какие отделы могут использовать R-Service?',
-                      answer: 'R-Service может использоваться всеми подразделениями компании: ИТ, HR, административный отдел, финансы, юридический отдел и другие.',
+                      question: 'Какие отделы могут использовать RVS?',
+                      answer: 'RVS может использоваться всеми подразделениями компании: ИТ, HR, административный отдел, финансы, юридический отдел и другие.',
                     },
                     {
-                      question: 'Можно ли интегрировать R-Service с другими системами?',
-                      answer: 'Да, R-Service имеет открытый API и готовые коннекторы для интеграции с популярными корпоративными системами.',
+                      question: 'Можно ли интегрировать RVS с другими системами?',
+                      answer: 'Да, RVS имеет открытый API и готовые коннекторы для интеграции с популярными корпоративными системами.',
                     },
                   ].map((item, index) => (
                     <div key={index} className="border-b border-default-200 pb-4">
@@ -289,7 +290,7 @@ export default function RServicePage() {
                       variant: 'flat',
                       size: 'md',
                     })}
-                    href="/r-service/faq">
+                    href="/rvs/faq">
                     Все вопросы и ответы
                   </Link>
                 </div>
@@ -303,7 +304,7 @@ export default function RServicePage() {
                 transition={{ duration: 0.5 }}>
                 <h3 className="text-2xl font-semibold mb-4">Свяжитесь с нами</h3>
                 <p className="text-default-600 mb-6">
-                  Наши специалисты готовы ответить на ваши вопросы о платформе R-Service и помочь с выбором оптимального решения для вашей компании.
+                  Наши специалисты готовы ответить на ваши вопросы о платформе RVS и помочь с выбором оптимального решения для вашей компании.
                 </p>
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center gap-3">
@@ -341,7 +342,7 @@ export default function RServicePage() {
                         <polyline points="22,6 12,13 2,6"></polyline>
                       </svg>
                     </div>
-                    <span className="text-default-600">info@r-service.com</span>
+                    <span className="text-default-600">info@rvs.com</span>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-4">
@@ -351,7 +352,7 @@ export default function RServicePage() {
                       variant: 'shadow',
                       size: 'md',
                     })}
-                    href="/r-service/demo">
+                    href="/rvs/demo">
                     Запросить демо
                   </Link>
                   <Link

@@ -57,12 +57,41 @@ import openyard from '../../public/proitsolutions/openyard.png';
 import p7 from '../../public/proitsolutions/p7.png';
 import primo from '../../public/proitsolutions/primo.png';
 import psql from '../../public/proitsolutions/psql.png';
+import pt from '../../public/proitsolutions/pt.jpeg';
+import sakura from '../../public/proitsolutions/sakura.svg';
 import simpleone from '../../public/proitsolutions/simpleone.png';
 import space from '../../public/proitsolutions/space.png';
 import yadro from '../../public/proitsolutions/yadro.png';
 import zvirt from '../../public/proitsolutions/zvirt.png';
 
+import sterra from '../../public/proitsolutions/sterra_logo_let.png';
+
 export const partnersData = [
+  {
+    title: 'С-Терра',
+    description:
+      'Российский разработчик средств сетевой информационной безопасности на основе технологии IPsec VPN. Обеспечивает защиту межсетевых взаимодействий, беспроводных и мультисервисных сетей, безопасность работы удаленных и мобильных пользователей. Более 21 года на рынке ИБ с 47 продуктами в реестре российского ПО.',
+    image: sterra,
+    height: 70,
+    width: 170,
+  },
+
+  {
+    title: 'САКУРА',
+    description:
+      'Комплекс информационной безопасности для контроля удалённых рабочих мест и активного реагирования на несоответствие профилям безопасности. Полностью российская разработка, внесенная в реестр отечественного ПО.',
+    image: sakura,
+    height: 70,
+    width: 170,
+  },
+  {
+    title: 'Positive Technologies',
+    description:
+      'Ведущий российский разработчик решений для информационной безопасности, специализирующийся на выявлении уязвимостей, предотвращении кибератак и защите критической инфраструктуры',
+    image: pt,
+    height: 70,
+    width: 170,
+  },
   {
     title: 'Space',
     description: 'Российская платформа виртуализации, предоставляющая комплексное решение для создания и управления виртуальной инфраструктурой',
@@ -219,8 +248,6 @@ export const partnersData = [
     width: 91,
   },
 ];
-
-
 
 export interface Service2 {
   id: string;
