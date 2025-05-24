@@ -15,7 +15,7 @@ const AnimatedServicesSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-background">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-background w-full max-w-full overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 md:mb-24">
           Наши <span className="text-primary">услуги</span>
