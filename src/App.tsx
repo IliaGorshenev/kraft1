@@ -15,6 +15,7 @@ import PartnersPage from './pages/partners';
 import ServiceDetailPage from './pages/service-ind';
 import ServicesPage from './pages/services';
 import RServicePage from './pages/r-service';
+import NotFoundPage from './pages/404';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
         <Route element={<CustomersPage />} path="/customers" />
         <Route element={<ServicesPage />} path="/services" />
         <Route element={<ServiceDetailPage />} path="/services/:serviceId" />
+        {/* 404 route - must be last to catch all unmatched paths */}
+        <Route element={<NotFoundPage />} path="*" />
       </Routes>
     </>
   );
