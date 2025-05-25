@@ -123,7 +123,7 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-default-200">
+                {/* <div className="mt-8 pt-6 border-t border-default-200">
                   <h3 className="font-semibold text-lg mb-4">Мы в социальных сетях</h3>
                   <div className="flex space-x-4">
                     {[
@@ -165,7 +165,7 @@ export default function ContactPage() {
                       </Link>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </div>
             </motion.div>
 

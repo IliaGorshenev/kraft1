@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { sendTelegramNotification } from '@/utils/telegram';
 import { Input } from '@heroui/input';
-import { button as buttonStyles } from '@heroui/theme';
 import { Switch } from '@heroui/switch';
+import { button as buttonStyles } from '@heroui/theme';
+import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +26,9 @@ const ContactForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, consent: !prev.consent }));
   };
 
+  // Add this import at the top with your other imports
+
+  // Then modify your handleSubmit function:
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -36,11 +40,21 @@ const ContactForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, loading: true, error: false }));
 
     try {
-      // Simulating API call with timeout
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+      // Prepare notification message
+      const message = `
+<b>Новая заявка с сайта</b>
+<b>Имя:</b> ${formData.name}
+<b>Email:</b> ${formData.email}
+<b>Телефон:</b> ${formData.phone || 'Не указан'}
+<b>Сообщение:</b> ${formData.message || 'Не указано'}
+    `.trim();
+
+      // Send notification to Telegram (if configured)
+      await sendTelegramNotification(message);
+
+      // Continue with your existing success handling
       console.log('Form submitted:', formData);
-      
+
       setFormData((prev) => ({
         ...prev,
         loading: false,
@@ -64,7 +78,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <motion.section
-      id='feedback'
+      id="feedback"
       className="bg-primary/5 rounded-2xl p-8 my-12"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -73,9 +87,7 @@ const ContactForm: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold mb-4">Готовы обсудить ваш проект?</h2>
-          <p className="text-default-600 max-w-2xl mx-auto">
-            Заполните форму, и мы свяжемся с вами, чтобы обсудить, как мы можем помочь вашему бизнесу.
-          </p>
+          <p className="text-default-600 max-w-2xl mx-auto">Заполните форму, и мы свяжемся с вами, чтобы обсудить, как мы можем помочь вашему бизнесу.</p>
         </div>
 
         {formData.success ? (

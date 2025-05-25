@@ -3,6 +3,7 @@ import { Navbar as HeroUINavbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { link as linkStyles } from '@heroui/theme';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { Logo } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
@@ -10,6 +11,7 @@ import { siteConfig } from '@/config/site';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,19 @@ export const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
+
+  // Check if the current path matches the link href
+  const isActive = (href: string) => {
+    // Exact match for home page
+    if (href === '/' && location.pathname === '/') {
+      return true;
+    }
+    // For other pages, check if the pathname starts with the href (to handle nested routes)
+    if (href !== '/' && location.pathname.startsWith(href)) {
+      return true;
+    }
+    return false;
+  };
 
   return (
     <div
@@ -56,7 +71,11 @@ export const Navbar = () => {
             {siteConfig.navItems.map((item) => (
               <NavbarItem key={item.href}>
                 <Link
-                  className={clsx(linkStyles({ color: 'foreground' }), 'data-[active=true]:text-primary data-[active=true]:font-medium')}
+                  className={clsx(
+                    linkStyles({ color: 'foreground' }),
+                    'hover:text-[#55529E] transition-colors',
+                    isActive(item.href) ? 'text-[#55529E] font-medium' : ''
+                  )}
                   color="foreground"
                   href={item.href}>
                   {item.label}
@@ -83,7 +102,14 @@ export const Navbar = () => {
           <div className="mx-4 mt-8 flex flex-col gap-4">
             {siteConfig.navMenuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`} className="py-2 border-b border-default-200/50">
-                <Link color={'foreground'} href={item.href} size="lg" className="text-xl font-medium hover:text-primary transition-colors">
+                <Link 
+                  color={'foreground'} 
+                  href={item.href} 
+                  size="lg" 
+                  className={clsx(
+                    "text-xl font-medium transition-colors hover:text-[#55529E]",
+                    isActive(item.href) ? "text-[#55529E]" : ""
+                  )}>
                   {item.label}
                 </Link>
               </NavbarMenuItem>
