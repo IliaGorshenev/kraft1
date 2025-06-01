@@ -50,21 +50,21 @@ export default function AboutCompanyHero() {
         grab: {
           distance: 280,
           links: {
-            opacity: 0.7,
-            color: '#ffffff',
+            opacity: 0.9,
+            color: '#55529E',
           },
         },
       },
     },
     particles: {
       color: {
-        value: ['#55529E', '#ffffff', '#f8f8f8'],
+        value: ['#55529E', '#171717', '#ff7803'],
       },
       links: {
-        color: '#ffffff',
+        color: '#55529E',
         distance: 190,
         enable: true,
-        opacity: 0.6,
+        opacity: 0.8,
         width: 1,
       },
       collisions: {
@@ -77,7 +77,7 @@ export default function AboutCompanyHero() {
           default: 'bounce',
         },
         random: true,
-        speed: 1.4,
+        speed: 1.1,
         straight: false,
       },
       number: {
@@ -87,18 +87,18 @@ export default function AboutCompanyHero() {
         value: 120,
       },
       opacity: {
-        value: 0.6,
+        value: 0.8,
       },
       shape: {
         type: 'circle',
       },
       size: {
-        value: { min: 1, max: 3 },
+        value: { min: 2, max: 3 },
       },
       twinkle: {
         particles: {
           enable: true,
-          frequency: 0.05,
+          frequency: 0.9,
           opacity: 1,
         },
       },
@@ -109,35 +109,34 @@ export default function AboutCompanyHero() {
   return (
     <FullWidthSection>
       {/* Particles Background */}
-      <div style={{ minHeight: '100vh', height: 'auto' }} className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-black to-gray-900">
+      <div style={{ minHeight: '100vh', height: 'auto' }} className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-white to-gray-100">
         {init && <Particles id="tsparticles" options={particlesOptions} className="absolute inset-0 w-full min-h-full" />}
-        <div className="absolute inset-0 bg-black/40 z-[2]"></div>
+        <div className="absolute inset-0 bg-white/40 z-[2]"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen container mx-auto px-4">
         <motion.div
-          className="max-w-3xl text-center px-6 py-8 sm:px-8 rounded-xl bg-black/30 backdrop-blur-sm my-auto"
+          className="max-w-3xl text-center px-6 py-8 sm:px-8 rounded-xl bg-white/70 backdrop-blur-sm shadow-lg my-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-4xl md:text-5xl font-bold mb-6 text-dark"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}>
             О компании <span className="text-primary">Крафт Лаб</span>
           </motion.h2>
 
-          <motion.p className="text-lg md:text-xl text-white/90 mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.4 }}>
+          <motion.p className="text-lg md:text-xl text-dark/90 mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.4 }}>
             Компания «Крафт Лаб» специализируется на разработке программного обеспечения и IT-консалтинге. Мы предлагаем полный цикл услуг от проектирования до внедрения
             и поддержки IT-решений.
           </motion.p>
 
-          <motion.p className="text-lg md:text-xl text-white/90 mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }}>
+          <motion.p className="text-lg md:text-xl text-dark/90 mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }}>
             Наша команда состоит из опытных разработчиков, аналитиков и проектных менеджеров, которые обеспечивают высокое качество и своевременную реализацию проектов.
           </motion.p>
-
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0 }}
@@ -158,7 +157,7 @@ export default function AboutCompanyHero() {
                 color: 'default',
                 variant: 'bordered',
                 size: 'lg',
-                class: 'w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20',
+                class: 'w-full sm:w-auto bg-primary/10 backdrop-blur-sm text-primary border-primary/30 hover:bg-primary/20',
               })}
               href="/services">
               Наши услуги
@@ -166,27 +165,7 @@ export default function AboutCompanyHero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}>
-        <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center">
-          <motion.div
-            className="w-1.5 h-3 bg-white/80 rounded-full mt-2"
-            animate={{
-              y: [0, 8, 0],
-              opacity: [0.8, 0.2, 0.8],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-            }}
-          />
-        </div>
-      </motion.div>
+      
     </FullWidthSection>
   );
 }

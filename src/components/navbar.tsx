@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { Logo } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 
@@ -60,10 +59,16 @@ export const Navbar = () => {
           }}
           className="basis-1/5 sm:basis-full"
           justify="start">
-          <NavbarBrand className="gap-3 max-w-fit">
+          {/* <NavbarBrand className="gap-3 max-w-fit">
             <Link className="flex justify-start items-center gap-1" color="foreground" href="/">
               <Logo />
               <p className="font-bold text-inherit">КрафтЛаб</p>
+            </Link>
+          </NavbarBrand> */}
+          <NavbarBrand className="gap-3 max-w-fit">
+            <Link className="flex justify-start items-center gap-1" color="foreground" href="/">
+              <img src="/kraft_logo_light.png" alt="КрафтЛаб логотип" style={{ maxWidth: '85px', height: 'auto' }} />
+              {/* <p className="font-bold text-inherit">КрафтЛаб</p> */}
             </Link>
           </NavbarBrand>
           {/* Changed from lg:flex to xl:flex to show at 1200px+ */}
@@ -71,11 +76,7 @@ export const Navbar = () => {
             {siteConfig.navItems.map((item) => (
               <NavbarItem key={item.href}>
                 <Link
-                  className={clsx(
-                    linkStyles({ color: 'foreground' }),
-                    'hover:text-[#55529E] transition-colors',
-                    isActive(item.href) ? 'text-[#55529E] font-medium' : ''
-                  )}
+                  className={clsx(linkStyles({ color: 'foreground' }), 'hover:text-[#55529E] transition-colors', isActive(item.href) ? 'text-[#55529E] font-medium' : '')}
                   color="foreground"
                   href={item.href}>
                   {item.label}
@@ -87,9 +88,9 @@ export const Navbar = () => {
 
         {/* Changed from hidden sm:flex to hidden xl:flex */}
         <NavbarContent className="hidden xl:flex basis-1/5 sm:basis-full" justify="end">
-          <NavbarItem className="hidden xl:flex gap-2">
+          {/* <NavbarItem className="hidden xl:flex gap-2">
             <ThemeSwitch />
-          </NavbarItem>
+          </NavbarItem> */}
         </NavbarContent>
 
         {/* Changed from sm:hidden to xl:hidden */}
@@ -102,14 +103,11 @@ export const Navbar = () => {
           <div className="mx-4 mt-8 flex flex-col gap-4">
             {siteConfig.navMenuItems.map((item, index) => (
               <NavbarMenuItem key={`${item}-${index}`} className="py-2 border-b border-default-200/50">
-                <Link 
-                  color={'foreground'} 
-                  href={item.href} 
-                  size="lg" 
-                  className={clsx(
-                    "text-xl font-medium transition-colors hover:text-[#55529E]",
-                    isActive(item.href) ? "text-[#55529E]" : ""
-                  )}>
+                <Link
+                  color={'foreground'}
+                  href={item.href}
+                  size="lg"
+                  className={clsx('text-xl font-medium transition-colors hover:text-[#55529E]', isActive(item.href) ? 'text-[#55529E]' : '')}>
                   {item.label}
                 </Link>
               </NavbarMenuItem>
