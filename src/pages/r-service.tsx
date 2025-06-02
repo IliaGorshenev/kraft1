@@ -44,8 +44,8 @@ export default function RServicePage() {
                 variant: 'bordered',
                 size: 'lg',
               })}
-              href="/rvs/demo">
-              Запросить демо
+              href="/rvs/price">
+              Узнать цену
             </Link>
           </motion.div>
         </motion.div>
@@ -352,8 +352,8 @@ export default function RServicePage() {
                       variant: 'shadow',
                       size: 'md',
                     })}
-                    href="/rvs/demo">
-                    Запросить демо
+                    href="/rvs/price">
+                    узнать цену
                   </Link>
                   <Link
                     className={buttonStyles({

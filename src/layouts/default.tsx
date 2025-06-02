@@ -14,7 +14,7 @@ export default function DefaultLayout({ children }: { children: React.ReactNode 
             <div>
               <h3 className="text-lg font-semibold mb-4">Контакты</h3>
               <p className="text-default-600 mb-2">Смирновская ул, д. 25 стр. 15, помещ. 12а</p>
-              <p className="text-default-600 mb-2">+7 (495) 120 80 29</p>
+              <p className="text-default-600 mb-2">+7 (909) 157-99-57</p>
               <p className="text-default-600 mb-2">
                 <Link className="text-primary hover:underline" href="mailto:info@kraftlab.ru">
                   info@kraftlab.ru

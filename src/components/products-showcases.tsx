@@ -69,8 +69,8 @@ const ProductsShowcase: React.FC = () => {
         href: '/rvs',
       },
       secondaryLink: {
-        text: 'Запросить демо',
-        href: '/rvs/demo',
+        text: 'Узнать цену',
+        href: '/rvs/price',
       },
     },
     // {

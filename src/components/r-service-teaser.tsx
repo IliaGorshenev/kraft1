@@ -60,8 +60,8 @@ const RServiceTeaser: React.FC = () => {
                   variant: 'bordered',
                   size: 'lg',
                 })}
-                href="/rvs/demo">
-                Запросить демо
+                href="/rvs/price">
+                Узнать цену
               </Link>
             </div>
           </motion.div>

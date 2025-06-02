@@ -25,7 +25,7 @@ const AnimatedServicesSection: React.FC = () => {
           <Swiper
             effect={'coverflow'}
             grabCursor={true}
-            centeredSlides={true}
+
             slidesPerView={'auto'}
             coverflowEffect={{
               rotate: 0,
@@ -40,7 +40,7 @@ const AnimatedServicesSection: React.FC = () => {
               pauseOnMouseEnter: true,
             }}
             pagination={{ clickable: true }}
-            navigation={true}
+            navigation={false}
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
             className="mySwiper"
             style={{ padding: '50px 0' }}>

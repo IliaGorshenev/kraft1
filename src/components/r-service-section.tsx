@@ -336,8 +336,8 @@ const RServiceSection: React.FC = () => {
               variant: 'shadow',
               size: 'lg',
             })}
-            href="/rvs/demo">
-            Запросить демо
+            href="/rvs/price">
+            Узнать цену
           </Link>
         </motion.div>
 
@@ -345,7 +345,7 @@ const RServiceSection: React.FC = () => {
         <motion.div className="mt-20 text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.div variants={itemVariants}>
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Официальный статус</div>
-            <h3 className="text-2xl font-bold mb-4">RR Tech Service Management — цифровая платформа для управления сервисами (SIAM/ESM)</h3>
+            <h3 className="text-2xl font-bold mb-4">RVS — цифровая платформа для управления сервисами (SIAM/ESM)</h3>
             <Link
               className={buttonStyles({
                 color: 'default',

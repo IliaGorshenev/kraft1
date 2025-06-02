@@ -29,7 +29,7 @@ export default function ContactPage() {
     },
     {
       title: 'Телефон',
-      details: '+7 (495) 120 80 29',
+      details: '+7 (909) 157-99-57',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
