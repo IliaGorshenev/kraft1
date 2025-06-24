@@ -67,7 +67,7 @@ export const Navbar = () => {
           </NavbarBrand> */}
           <NavbarBrand className="gap-3 max-w-fit">
             <Link className="flex justify-start items-center gap-1" color="foreground" href="/">
-              <img src="/kraft_logo_light.png" alt="КрафтЛаб логотип" style={{ maxWidth: '85px', height: 'auto' }} />
+              <img src="/kraft_logo_light-2.png" alt="КрафтЛаб логотип" style={{ maxWidth: '85px', height: 'auto' }} />
               {/* <p className="font-bold text-inherit">КрафтЛаб</p> */}
             </Link>
           </NavbarBrand>

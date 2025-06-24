@@ -15,6 +15,8 @@ import PartnersPage from './pages/partners';
 import RServicePage from './pages/r-service';
 import ServiceDetailPage from './pages/service-ind';
 import ServicesPage from './pages/services';
+import DocumentationPage from './pages/documentation';
+import DemoPage from './pages/demo-version';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route element={<AboutPage />} path="/about" />
         <Route element={<PartnersPage />} path="/partners" />
         <Route element={<RServicePage />} path="/rvs" />
+        <Route element={<DocumentationPage />} path="/documentation" />
+        <Route element={<DemoPage />} path="/demo" />
         <Route element={<ContactPage />} path="/contact" />
         <Route element={<DemoRequestPage />} path="/rvs/price" />
         <Route element={<CustomersPage />} path="/customers" />

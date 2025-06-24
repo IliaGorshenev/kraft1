@@ -180,7 +180,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}>
           <h1 className={title({ size: 'lg' })}>
-            Свяжитесь с <span className="text-primary">нами</span>
+            Запросить <span className="text-primary">стоимость</span>
           </h1>
           <motion.p className={subtitle({ class: 'mt-6 mx-auto' })} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}>
             Мы готовы ответить на ваши вопросы и обсудить возможности сотрудничества
@@ -397,7 +397,6 @@ export default function ContactPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}>
             <h2 className="text-3xl font-bold">Наш офис</h2>
-
           </motion.div>
 
           <div className="rounded-xl overflow-hidden shadow-lg">

@@ -97,7 +97,7 @@ const RServiceSection: React.FC = () => {
         </motion.div>
 
         {/* Key Benefits */}
-        <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
+        {/* <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.h3 className="text-3xl font-bold text-center mb-12" variants={itemVariants}>
             RVS наводит порядок в бизнес-процессах
           </motion.h3>
@@ -127,10 +127,10 @@ const RServiceSection: React.FC = () => {
               <p className="text-default-600">Процессы идут оперативно и прозрачно благодаря автоматизации и четким правилам</p>
             </motion.div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Why Choose RVS */}
-        <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
+        {/* <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.div className="text-center mb-12" variants={itemVariants}>
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">вместо классических ITSM-систем</div>
             <h3 className="text-3xl font-bold">8 причин выбрать RVS</h3>
@@ -184,10 +184,10 @@ const RServiceSection: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Industries */}
-        <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
+        {/* <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.h3 className="text-3xl font-bold text-center mb-12" variants={itemVariants}>
             RVS — решение для реальных задач в вашей отрасли
           </motion.h3>
@@ -213,10 +213,10 @@ const RServiceSection: React.FC = () => {
             Платформа разработана для enterprise-среды и ориентирована на крупные организации с развитой ИТ-инфраструктурой, распределённой структурой и высокими
             требованиями к надёжности, управляемости и безопасности.
           </motion.p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Problems Solved */}
-        <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
+        {/* <motion.div className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.h3 className="text-3xl font-bold text-center mb-12" variants={itemVariants}>
             Бизнес-проблемы, которые решает RVS
           </motion.h3>
@@ -315,7 +315,7 @@ const RServiceSection: React.FC = () => {
               </div>
             </motion.div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Call to Action */}
         <motion.div
@@ -342,7 +342,7 @@ const RServiceSection: React.FC = () => {
         </motion.div>
 
         {/* Certification */}
-        <motion.div className="mt-20 text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
+        {/* <motion.div className="mt-20 text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={containerVariants}>
           <motion.div variants={itemVariants}>
             <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">Официальный статус</div>
             <h3 className="text-2xl font-bold mb-4">RVS — цифровая платформа для управления сервисами (SIAM/ESM)</h3>
@@ -358,7 +358,7 @@ const RServiceSection: React.FC = () => {
               Посмотреть в Реестре
             </Link>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
