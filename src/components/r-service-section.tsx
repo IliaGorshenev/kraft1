@@ -14,28 +14,7 @@ const RServiceSection: React.FC = () => {
       },
     },
   };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
-  const featureCardVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+  
 
   return (
     <section className="py-16 md:py-24">

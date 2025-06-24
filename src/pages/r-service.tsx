@@ -1,6 +1,5 @@
 import ContactForm from '@/components/contact-form';
 import { subtitle, title } from '@/components/primitives';
-import RServiceSection from '@/components/RVS-Service-section';
 
 import DefaultLayout from '@/layouts/default';
 import { Link } from '@heroui/link';
