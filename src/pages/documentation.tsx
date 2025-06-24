@@ -106,7 +106,7 @@ export default function DocumentationPage() {
     {
       id: 'saas_документация',
       title: 'Регламент поддержки SaaS',
-      description: 'Стандарты и порядок оказания поддержки продуктов RR Tech в облаке.',
+      description: 'Стандарты и порядок оказания поддержки продуктов KraftLab в облаке.',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ export default function DocumentationPage() {
     {
       id: 'onprem_документация',
       title: 'Регламент поддержки On-Premise',
-      description: 'Правила технической поддержки решений RR Tech в инфраструктуре заказчика.',
+      description: 'Правила технической поддержки решений KraftLab в инфраструктуре заказчика.',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
