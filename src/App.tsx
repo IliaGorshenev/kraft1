@@ -12,11 +12,14 @@ import ContactPage from './pages/contacts';
 import CustomersPage from './pages/customers';
 import DemoRequestPage from './pages/demo';
 import PartnersPage from './pages/partners';
-import RServicePage from './pages/r-service';
+
 import ServiceDetailPage from './pages/service-ind';
 import ServicesPage from './pages/services';
 import DocumentationPage from './pages/documentation';
 import DemoPage from './pages/demo-version';
+import ArchitecturePage from './pages/architecture';
+import SiamPage from './pages/siam';
+import RServicePage from './pages/r-service';
 
 function App() {
   return (
@@ -36,6 +39,8 @@ function App() {
         <Route element={<CustomersPage />} path="/customers" />
         <Route element={<ServicesPage />} path="/services" />
         <Route element={<ServiceDetailPage />} path="/services/:serviceId" />
+        <Route element={<ArchitecturePage />} path="/architecture" />
+        <Route element={<SiamPage />} path="/siam" />
         {/* 404 route - must be last to catch all unmatched paths */}
         <Route element={<NotFoundPage />} path="*" />
       </Routes>

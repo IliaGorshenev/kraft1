@@ -43,6 +43,24 @@ export default function RServicePage() {
                 variant: 'bordered',
                 size: 'lg',
               })}
+              href="/architecture">
+              Архитектура
+            </Link>
+            <Link
+              className={buttonStyles({
+                color: 'default',
+                variant: 'bordered',
+                size: 'lg',
+              })}
+              href="/siam">
+              SIAM
+            </Link>
+            <Link
+              className={buttonStyles({
+                color: 'default',
+                variant: 'bordered',
+                size: 'lg',
+              })}
               href="/rvs/price">
               Узнать цену
             </Link>
